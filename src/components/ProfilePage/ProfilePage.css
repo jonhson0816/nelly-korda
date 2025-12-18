@@ -1,0 +1,1702 @@
+:root {
+  --linkedin-blue: #0a66c2;
+  --linkedin-blue-hover: #004182;
+  --linkedin-blue-light: #378fe9;
+  --linkedin-dark: #000000;
+  --linkedin-text: #000000e6;
+  --linkedin-text-secondary: #00000099;
+  --linkedin-border: #00000014;
+  --linkedin-bg: #f3f2ef;
+  --linkedin-card-bg: #ffffff;
+  --linkedin-hover: #f3f2ef;
+  --linkedin-green: #057642;
+  --linkedin-red: #cc1016;
+  --linkedin-orange: #f5c26b;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.profile-page {
+  background-color: var(--linkedin-bg);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--linkedin-text);
+  padding-top: 60px;
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+.profile-loading,
+.profile-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--linkedin-border);
+  border-top-color: var(--linkedin-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.profile-loading p {
+  font-size: 16px;
+  color: var(--linkedin-text-secondary);
+}
+
+.profile-not-found h2 {
+  font-size: 24px;
+  color: var(--linkedin-text);
+  margin-bottom: 16px;
+}
+
+.profile-not-found button {
+  background-color: var(--linkedin-blue);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-not-found button:hover {
+  background-color: var(--linkedin-blue-hover);
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.profile-container {
+  max-width: 1168px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ============================================
+   COVER PHOTO SECTION
+   ============================================ */
+.profile-cover-section {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
+}
+
+.cover-photo {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.cover-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.edit-cover-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--linkedin-card-bg);
+  color: var(--linkedin-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.edit-cover-btn:hover {
+  background-color: var(--linkedin-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.edit-cover-btn .icon {
+  font-size: 16px;
+}
+
+/* ============================================
+   PROFILE INFO BAR
+   ============================================ */
+.profile-info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 24px 0;
+  position: relative;
+}
+
+.profile-info-left {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.profile-avatar-large {
+  position: relative;
+  margin-top: -75px;
+  background-color: var(--linkedin-card-bg);
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 0 0 4px var(--linkedin-card-bg);
+}
+
+.edit-avatar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--linkedin-card-bg);
+  border: 2px solid var(--linkedin-card-bg);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+
+.edit-avatar-btn:hover {
+  background-color: var(--linkedin-hover);
+  transform: scale(1.05);
+}
+
+.edit-avatar-btn .icon {
+  font-size: 18px;
+}
+
+.verified-badge-large {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: var(--linkedin-blue);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 2px solid var(--linkedin-card-bg);
+}
+
+.profile-identity {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  line-height: 1.3;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-badge {
+  background: linear-gradient(135deg, #f5c26b 0%, #f09819 100%);
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.profile-username {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  margin-bottom: 8px;
+}
+
+.profile-bio {
+  font-size: 14px;
+  color: var(--linkedin-text);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.profile-location {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.profile-location .icon {
+  font-size: 16px;
+}
+
+/* ============================================
+   PROFILE ACTIONS
+   ============================================ */
+.profile-actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--linkedin-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--linkedin-blue-hover);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--linkedin-blue);
+  border: 1px solid var(--linkedin-blue);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(10, 102, 194, 0.08);
+  border-color: var(--linkedin-blue-hover);
+}
+
+/* ============================================
+   STATS BAR
+   ============================================ */
+.profile-stats-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 24px;
+  border-top: 1px solid var(--linkedin-border);
+  border-bottom: 1px solid var(--linkedin-border);
+  margin-top: 16px;
+}
+
+.stat-item {
+  text-align: center;
+  transition: background-color 0.2s;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.stat-item:hover {
+  background-color: var(--linkedin-hover);
+}
+
+.stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  line-height: 1.3;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  margin-top: 4px;
+}
+
+/* ============================================
+   NAVIGATION TABS
+   ============================================ */
+.profile-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.profile-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 16px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: var(--linkedin-text);
+}
+
+.tab-btn.active {
+  color: var(--linkedin-green);
+  border-bottom-color: var(--linkedin-green);
+}
+
+/* ============================================
+   MAIN CONTENT LAYOUT - STICKY SIDEBARS
+   ============================================ */
+.profile-main-content {
+  display: grid;
+  grid-template-columns: 225px 1fr 300px;
+  gap: 24px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+/* LEFT SIDEBAR - STICKY */
+.profile-left-sidebar {
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.profile-left-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.profile-left-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.profile-left-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.profile-left-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* MIDDLE CONTENT - SCROLLABLE */
+.profile-middle-content {
+  min-width: 0;
+}
+
+/* RIGHT SIDEBAR - STICKY */
+.profile-right-sidebar {
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.profile-right-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.profile-right-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.profile-right-sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.profile-right-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   PROFILE CARDS
+   ============================================ */
+.profile-card {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s;
+}
+
+.profile-card:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   INTRO CARD
+   ============================================ */
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.intro-bio {
+  font-size: 14px;
+  color: var(--linkedin-text);
+  line-height: 1.5;
+}
+
+.intro-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--linkedin-text);
+}
+
+.intro-item .icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.interests-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.interest-tag {
+  background-color: var(--linkedin-hover);
+  color: var(--linkedin-text);
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn-edit-details {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: var(--linkedin-blue);
+  border: 1px solid var(--linkedin-blue);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit-details:hover {
+  background-color: rgba(10, 102, 194, 0.08);
+  border-color: var(--linkedin-blue-hover);
+}
+
+/* ============================================
+   SOCIAL LINKS
+   ============================================ */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: var(--linkedin-text);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.social-links a:hover {
+  background-color: var(--linkedin-hover);
+}
+
+.social-links .icon {
+  font-size: 18px;
+}
+
+/* ============================================
+   BADGES GRID
+   ============================================ */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 12px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.badge-item:hover {
+  background-color: var(--linkedin-hover);
+  transform: translateY(-2px);
+}
+
+.badge-icon {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.badge-name {
+  font-size: 11px;
+  color: var(--linkedin-text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================
+   POST CARDS
+   ============================================ */
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-card {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 16px 0;
+}
+
+.post-author {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.verified-badge {
+  background-color: var(--linkedin-blue);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.post-time {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+}
+
+.post-menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.post-menu-btn:hover {
+  background-color: var(--linkedin-hover);
+}
+
+.post-content {
+  padding: 12px 16px;
+}
+
+.post-caption {
+  font-size: 14px;
+  color: var(--linkedin-text);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* ============================================
+   POST MEDIA GRID - FIXED VERSION
+   Paste this section to replace lines ~580-720 in ProfilePage.css
+   ============================================ */
+.post-media {
+  display: grid;
+  gap: 2px;
+  background-color: var(--linkedin-bg);
+  margin-top: 8px;
+  margin-bottom: 0; /* CRITICAL: Ensures no overlap */
+}
+
+.post-media.media-count-1 {
+  grid-template-columns: 1fr;
+  max-height: 600px;
+}
+
+.post-media.media-count-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 400px;
+}
+
+.post-media.media-count-3 {
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 400px;
+}
+
+.post-media.media-count-3 .media-item:first-child {
+  grid-row: 1 / 3;
+}
+
+.post-media.media-count-4 {
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 500px;
+}
+
+.post-media.media-count-5plus {
+  grid-template-columns: repeat(2, 1fr);
+  max-height: 500px;
+}
+
+.media-item {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--linkedin-dark);
+  display: flex; /* ADD THIS */
+  align-items: center; /* ADD THIS */
+  justify-content: center; /* ADD THIS */
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* vertical-align: bottom; */
+}
+
+.media-item[data-remaining]::after {
+  content: attr(data-remaining);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* ============================================
+   POST STATS & ACTIONS - FIXED VERSION
+   ============================================ */
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--linkedin-border);
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  background-color: var(--linkedin-card-bg); /* ADD THIS */
+  position: relative; /* ADD THIS */
+  z-index: 1; /* ADD THIS - Keeps it above media */
+}
+
+.post-stats-left,
+.post-stats-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.stat-likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.like-icon {
+  background-color: var(--linkedin-blue);
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.stat-link {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.stat-link:hover {
+  color: var(--linkedin-blue);
+  text-decoration: underline;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 8px;
+  background-color: var(--linkedin-card-bg); /* ADD THIS */
+  position: relative; /* ADD THIS */
+  z-index: 1; /* ADD THIS - Keeps it above media */
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  background: none;
+  border: none;
+  color: var(--linkedin-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background-color: var(--linkedin-hover);
+  color: var(--linkedin-text);
+}
+
+.action-btn.active {
+  color: var(--linkedin-blue);
+}
+
+.action-btn .icon {
+  font-size: 18px;
+}
+
+/* ============================================
+   PHOTOS & VIDEOS SECTIONS
+   ============================================ */
+.photos-section,
+.videos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload-gallery-card {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--linkedin-blue);
+  color: white;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upload-btn:hover {
+  background-color: var(--linkedin-blue-hover);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+.photos-grid,
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.photo-item,
+.video-item {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--linkedin-dark);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.photo-item:hover,
+.video-item:hover {
+  transform: scale(1.02);
+}
+
+.photo-item img,
+.video-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-caption,
+.video-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  padding: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* ============================================
+   ACHIEVEMENTS SECTION
+   ============================================ */
+.achievements-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.achievements-grid-profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.achievement-card-profile {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.achievement-card-profile:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.achievement-card-image-profile {
+  position: relative;
+  height: 160px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.achievement-card-image-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.achievement-placeholder-profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-icon-profile {
+  font-size: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.major-badge-profile {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: linear-gradient(135deg, #f5c26b 0%, #f09819 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-card-content-profile {
+  padding: 12px;
+}
+
+.achievement-category-profile {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--linkedin-blue);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.achievement-title-profile {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.achievement-year-profile {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* ============================================
+   TOURNAMENT SECTION
+   ============================================ */
+.tournaments-grid-profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.tournament-card-profile {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tournament-card-profile:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.tournament-card-image-profile {
+  position: relative;
+  height: 160px;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  overflow: hidden;
+}
+
+.tournament-card-image-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tournament-placeholder-profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tournament-icon-profile {
+  font-size: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.tournament-featured-badge-profile {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #f5c26b 0%, #f09819 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tournament-status-badge-profile {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--linkedin-green);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tournament-card-content-profile {
+  padding: 12px;
+}
+
+.tournament-type-profile {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--linkedin-blue);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.tournament-title-profile {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.tournament-location-profile,
+.tournament-dates-profile {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   PROFILE COMPLETION & STATS
+   ============================================ */
+.completion-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--linkedin-hover);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.completion-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--linkedin-blue) 0%, var(--linkedin-green) 100%);
+  transition: width 0.3s ease;
+}
+
+.completion-text {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  text-align: center;
+}
+
+.quick-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quick-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.quick-stat:last-child {
+  border-bottom: none;
+}
+
+.quick-stat .label {
+  font-size: 13px;
+  color: var(--linkedin-text-secondary);
+}
+
+.quick-stat .value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+}
+
+.stats-grid-large {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.stat-card-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--linkedin-hover);
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.stat-card-large:hover {
+  background-color: var(--linkedin-border);
+  transform: translateY(-2px);
+}
+
+.stat-card-large .stat-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card-large .stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--linkedin-text);
+  margin-bottom: 4px;
+}
+
+.stat-card-large .stat-label {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================
+   EMPTY STATES
+   ============================================ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.empty-state .icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* ============================================
+   MODAL STYLES
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background-color: var(--linkedin-hover);
+  color: var(--linkedin-text);
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--linkedin-border);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--linkedin-border);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--linkedin-text);
+  background-color: var(--linkedin-card-bg);
+  transition: all 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--linkedin-blue);
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: var(--linkedin-text-secondary);
+  border: 1px solid var(--linkedin-border);
+}
+
+.btn-cancel:hover {
+  background-color: var(--linkedin-hover);
+  border-color: var(--linkedin-text-secondary);
+}
+
+.btn-save {
+  background-color: var(--linkedin-blue);
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: var(--linkedin-blue-hover);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+/* ============================================
+   SETTINGS PAGE
+   ============================================ */
+.settings-page {
+  background-color: var(--linkedin-bg);
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+.settings-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.settings-header {
+  margin-bottom: 32px;
+}
+
+.settings-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+}
+
+.settings-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.settings-tab {
+  background: none;
+  border: none;
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.settings-tab:hover {
+  color: var(--linkedin-text);
+}
+
+.settings-tab.active {
+  color: var(--linkedin-blue);
+  border-bottom-color: var(--linkedin-blue);
+}
+
+.settings-content {
+  background-color: var(--linkedin-card-bg);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 16px;
+}
+
+.settings-section > p {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  margin-bottom: 20px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text);
+  margin-bottom: 4px;
+}
+
+.settings-row-info p {
+  font-size: 13px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--linkedin-border);
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--linkedin-green);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Danger Zone */
+.danger-zone {
+  margin-top: 32px;
+  padding: 20px;
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+}
+
+.danger-zone h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-red);
+  margin-bottom: 8px;
+}
+
+.btn-danger {
+  background-color: var(--linkedin-red);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover {
+  background-color: #b30000;
+  box-shadow: 0 4px 12px rgba(204, 16, 22, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+  .profile-main-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .profile-left-sidebar,
+  .profile-right-sidebar {
+    position: static;
+    max-height: none;
+  }
+
+  .profile-right-sidebar {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    padding-top: 56px;
+  }
+
+  .cover-photo {
+    height: 120px;
+  }
+
+  .profile-avatar-large {
+    margin-top: -50px;
+  }
+
+  .profile-info-bar {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile-info-left {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-stats-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: calc(50% - 4px);
+  }
+
+  .profile-tabs {
+    padding: 0 16px;
+  }
+
+  .photos-grid,
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .achievements-grid-profile,
+  .tournaments-grid-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid-large {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .photos-grid,
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .post-actions {
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+}

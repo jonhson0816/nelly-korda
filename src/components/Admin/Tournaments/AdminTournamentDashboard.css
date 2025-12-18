@@ -1,0 +1,596 @@
+:root {
+  --linkedin-blue: #0a66c2;
+  --linkedin-blue-hover: #004182;
+  --linkedin-blue-light: #378fe9;
+  --linkedin-dark: #1d2226;
+  --linkedin-gray-dark: #313338;
+  --linkedin-gray: #5e6268;
+  --linkedin-gray-light: #8b8d91;
+  --linkedin-gray-lighter: #d8dadc;
+  --linkedin-gray-bg: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-green: #057642;
+  --linkedin-red: #cc1016;
+  --linkedin-orange: #dd5143;
+  --border-radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.12);
+  --transition: all 0.2s ease-in-out;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+.admin-tournament-dashboard {
+  background-color: var(--linkedin-gray-bg);
+  min-height: 100vh;
+  margin: 2rem auto;
+  padding: 24px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: var(--linkedin-dark);
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--linkedin-gray-lighter);
+  border-top-color: var(--linkedin-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  margin-top: 16px;
+  color: var(--linkedin-gray);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Header */
+.admin-header {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--linkedin-dark);
+  letter-spacing: -0.02em;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--linkedin-blue-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--linkedin-white);
+  color: var(--linkedin-blue);
+  border: 1px solid var(--linkedin-blue);
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(10, 102, 194, 0.08);
+  border-color: var(--linkedin-blue-hover);
+}
+
+.btn-danger {
+  background-color: var(--linkedin-red);
+  color: var(--linkedin-white);
+  border: none;
+  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-danger:hover {
+  background-color: #a00c11;
+  box-shadow: var(--shadow-md);
+}
+
+/* Banners */
+.success-banner,
+.error-banner {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  font-size: 14px;
+  font-weight: 500;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-banner {
+  border-left: 4px solid var(--linkedin-green);
+  color: var(--linkedin-green);
+}
+
+.error-banner {
+  border-left: 4px solid var(--linkedin-red);
+  color: var(--linkedin-red);
+}
+
+.success-banner span,
+.error-banner span {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+/* Filters */
+.admin-filters {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-dark);
+}
+
+.filter-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--linkedin-gray-lighter);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--linkedin-dark);
+  background-color: var(--linkedin-white);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-group select:hover {
+  border-color: var(--linkedin-gray-light);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--linkedin-blue);
+  box-shadow: 0 0 0 1px var(--linkedin-blue);
+}
+
+/* Stats Overview */
+.stats-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.stat-box:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.stat-box h3 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--linkedin-blue);
+}
+
+.stat-box p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--linkedin-gray);
+}
+
+/* Table Container */
+.tournaments-table-container {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.tournaments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tournaments-table thead {
+  background-color: var(--linkedin-gray-bg);
+}
+
+.tournaments-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--linkedin-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--linkedin-gray-lighter);
+}
+
+.tournaments-table tbody tr {
+  border-bottom: 1px solid var(--linkedin-gray-lighter);
+  transition: var(--transition);
+}
+
+.tournaments-table tbody tr:hover {
+  background-color: rgba(10, 102, 194, 0.04);
+}
+
+.tournaments-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tournaments-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: var(--linkedin-dark);
+  vertical-align: middle;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--linkedin-gray);
+  font-size: 13px;
+}
+
+/* Tournament Cell */
+.tournament-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tournament-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--linkedin-gray-lighter);
+}
+
+.tournament-cell strong {
+  display: block;
+  font-weight: 600;
+  color: var(--linkedin-dark);
+  margin-bottom: 4px;
+}
+
+.position-badge {
+  display: inline-block;
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Date Cell */
+.date-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-upcoming {
+  background-color: rgba(10, 102, 194, 0.1);
+  color: var(--linkedin-blue);
+}
+
+.status-ongoing {
+  background-color: rgba(5, 118, 66, 0.1);
+  color: var(--linkedin-green);
+}
+
+.status-completed {
+  background-color: rgba(94, 98, 104, 0.1);
+  color: var(--linkedin-gray);
+}
+
+.status-cancelled {
+  background-color: rgba(204, 16, 22, 0.1);
+  color: var(--linkedin-red);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  background-color: var(--linkedin-gray-bg);
+  transform: scale(1.1);
+}
+
+.btn-view:hover {
+  background-color: rgba(10, 102, 194, 0.1);
+}
+
+.btn-edit:hover {
+  background-color: rgba(10, 102, 194, 0.1);
+}
+
+.btn-performance:hover {
+  background-color: rgba(5, 118, 66, 0.1);
+}
+
+.btn-gallery:hover {
+  background-color: rgba(221, 81, 67, 0.1);
+}
+
+.btn-delete:hover {
+  background-color: rgba(204, 16, 22, 0.1);
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  padding: 48px 16px !important;
+  color: var(--linkedin-gray);
+  font-style: italic;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: var(--linkedin-white);
+  border-radius: var(--border-radius);
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h2 {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--linkedin-dark);
+}
+
+.modal-content p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--linkedin-gray);
+}
+
+.modal-content strong {
+  color: var(--linkedin-dark);
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .tournaments-table {
+    font-size: 13px;
+  }
+  
+  .tournaments-table th,
+  .tournaments-table td {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-tournament-dashboard {
+    padding: 16px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .admin-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    min-width: 100%;
+  }
+
+  .stats-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tournaments-table-container {
+    overflow-x: auto;
+  }
+
+  .tournaments-table {
+    min-width: 1000px;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}

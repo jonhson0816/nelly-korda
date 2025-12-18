@@ -1,0 +1,441 @@
+/* ========================================
+   TERMS PAGE - LINKEDIN CSS STANDARD
+   Professional, Clean, Corporate Design
+   ======================================== */
+
+/* Container */
+.terms-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f3f2ef;
+  padding-bottom: 60px;
+}
+
+/* Hero Section */
+.terms-hero {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.terms-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terms-hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  letter-spacing: -0.5px;
+}
+
+.terms-hero p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 32px;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.terms-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.last-updated {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.download-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.download-link:hover {
+  background-color: #ffffff;
+  color: #0a66c2;
+  transform: translateY(-2px);
+}
+
+/* Quick Navigation */
+.terms-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.terms-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.terms-nav h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a66c2;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: #f3f2ef;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+/* Terms Container */
+.terms-container {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+/* Introduction */
+.terms-intro {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.terms-intro h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 20px;
+  letter-spacing: -0.3px;
+}
+
+.terms-intro p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.terms-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Terms Section */
+.terms-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  scroll-margin-top: 100px;
+}
+
+.terms-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.terms-section-header:hover {
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.section-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.section-title h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.section-toggle {
+  font-size: 32px;
+  font-weight: 300;
+  color: #0a66c2;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+/* Terms Section Content */
+.terms-section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.terms-section-content.active {
+  max-height: 3000px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.content-text {
+  padding: 24px;
+}
+
+.content-text p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  white-space: pre-wrap;
+}
+
+.content-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Agreement Section */
+.terms-agreement {
+  margin-top: 40px;
+}
+
+.agreement-box {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.agreement-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.agreement-content {
+  flex: 1;
+}
+
+.agreement-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  letter-spacing: -0.3px;
+}
+
+.agreement-content p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  opacity: 0.95;
+}
+
+.agreement-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-contact,
+.btn-privacy {
+  padding: 12px 28px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.btn-contact {
+  background-color: #ffffff;
+  color: #0a66c2;
+}
+
+.btn-contact:hover {
+  background-color: #f3f2ef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-privacy {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-privacy:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terms-hero {
+    padding: 60px 16px;
+  }
+
+  .terms-hero h1 {
+    font-size: 36px;
+  }
+
+  .terms-hero p {
+    font-size: 16px;
+  }
+
+  .terms-meta {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .terms-nav {
+    padding: 16px;
+  }
+
+  .terms-nav h3 {
+    font-size: 13px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .terms-container {
+    padding: 0 16px;
+  }
+
+  .terms-intro {
+    padding: 24px 20px;
+  }
+
+  .terms-intro h2 {
+    font-size: 24px;
+  }
+
+  .terms-section-header {
+    padding: 20px 16px;
+  }
+
+  .section-title {
+    gap: 12px;
+  }
+
+  .section-icon {
+    font-size: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 18px;
+  }
+
+  .content-text {
+    padding: 20px 16px;
+  }
+
+  .agreement-box {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 20px;
+  }
+
+  .agreement-icon {
+    font-size: 40px;
+  }
+
+  .agreement-content h3 {
+    font-size: 20px;
+  }
+
+  .agreement-buttons {
+    flex-direction: column;
+  }
+
+  .btn-contact,
+  .btn-privacy {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-hero h1 {
+    font-size: 28px;
+  }
+
+  .terms-hero p {
+    font-size: 14px;
+  }
+
+  .download-link {
+    font-size: 13px;
+    padding: 6px 16px;
+  }
+
+  .terms-intro h2 {
+    font-size: 20px;
+  }
+
+  .terms-intro p,
+  .content-text p,
+  .agreement-content p {
+    font-size: 14px;
+  }
+
+  .section-title h2 {
+    font-size: 16px;
+  }
+}

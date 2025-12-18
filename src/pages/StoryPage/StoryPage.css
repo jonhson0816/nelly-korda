@@ -1,0 +1,839 @@
+/* ============================================
+   STORY PAGE - LinkedIn Professional Standard
+   ============================================ */
+
+/* Story Page Container */
+.story-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+
+.story-loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #0a66c2;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.story-not-found {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #fff;
+}
+
+.story-not-found h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.story-not-found button {
+  margin-top: 10px;
+  padding: 14px 32px;
+  background: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+.story-not-found button:hover {
+  background: #004182;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4);
+}
+
+/* ============================================
+   PROGRESS BARS
+   ============================================ */
+
+.story-progress-bars {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 100;
+  padding: 0 8px;
+}
+
+.progress-bar-container {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.9) 100%);
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   STORY HEADER
+   ============================================ */
+
+.story-header {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  backdrop-filter: blur(8px);
+}
+
+.story-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeInLeft 0.4s ease-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.story-author-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2.5px solid #0a66c2;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.story-author-avatar:hover {
+  transform: scale(1.05);
+}
+
+.story-author-info h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.2px;
+}
+
+.story-author-info p {
+  margin: 2px 0 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.story-header-actions {
+  display: flex;
+  gap: 10px;
+  animation: fadeInRight 0.4s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.story-header-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.story-header-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.story-header-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   STORY CONTENT
+   ============================================ */
+
+.story-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background: #000;
+}
+
+.story-media-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.story-media {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.story-text-content {
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 0.5s ease-out;
+  position: relative;
+}
+
+.story-text-content p {
+  animation: slideUp 0.6s ease-out;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-sticker {
+  pointer-events: none;
+  user-select: none;
+  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.story-caption {
+  position: absolute;
+  bottom: 90px;
+  left: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 14px 18px;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  animation: slideUpFade 0.5s ease-out;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-caption p {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  text-shadow: none;
+}
+
+.story-no-content {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ============================================
+   STORY FOOTER
+   ============================================ */
+
+.story-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  backdrop-filter: blur(8px);
+  z-index: 98;
+  animation: slideUpFade 0.5s ease-out;
+}
+
+.story-views {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.story-views:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.story-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.story-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.story-action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.story-action-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.story-action-btn.liked {
+  background: rgba(237, 73, 86, 0.25);
+  border-color: rgba(237, 73, 86, 0.4);
+  color: #ff6b6b;
+}
+
+.story-action-btn.liked:hover {
+  background: rgba(237, 73, 86, 0.35);
+  border-color: rgba(237, 73, 86, 0.5);
+}
+
+.story-action-btn .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ============================================
+   NAVIGATION HINTS
+   ============================================ */
+
+.story-nav-hint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+}
+
+.story-nav-hint:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.story-nav-hint.left {
+  left: 24px;
+}
+
+.story-nav-hint.right {
+  right: 24px;
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+
+.story-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 200;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.story-modal {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 540px;
+  max-height: 75vh;
+  overflow: hidden;
+  animation: slideUpModal 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUpModal {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.story-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.story-modal-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6b7280;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.story-modal-header button:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.story-modal-content {
+  padding: 20px 24px;
+  max-height: 55vh;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.story-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.story-modal-content::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.story-modal-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.story-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.no-viewers {
+  text-align: center;
+  color: #6b7280;
+  padding: 48px 20px;
+  font-size: 15px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ============================================
+   VIEWERS LIST
+   ============================================ */
+
+.viewers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.viewer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.viewer-item:hover {
+  background: #f9fafb;
+}
+
+.viewer-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+}
+
+.viewer-info h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.viewer-info p {
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  color: #6b7280;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* ============================================
+   COMMENT FORM
+   ============================================ */
+
+.comment-form {
+  padding: 20px 24px;
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 24px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: #f9fafb;
+}
+
+.comment-form input:focus {
+  border-color: #0a66c2;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.comment-form button {
+  padding: 12px 28px;
+  background: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3);
+}
+
+.comment-form button:hover {
+  background: #004182;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.4);
+}
+
+.comment-form button:active {
+  transform: translateY(0);
+}
+
+.comment-form button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .story-header {
+    padding: 14px 16px;
+  }
+
+  .story-author-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .story-author-info h4 {
+    font-size: 15px;
+  }
+
+  .story-author-info p {
+    font-size: 12px;
+  }
+
+  .story-header-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .story-footer {
+    padding: 16px;
+  }
+
+  .story-views {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .story-action-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    gap: 5px;
+  }
+
+  .story-action-btn .icon {
+    font-size: 17px;
+  }
+
+  .story-nav-hint {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .story-nav-hint.left {
+    left: 16px;
+  }
+
+  .story-nav-hint.right {
+    right: 16px;
+  }
+
+  .story-modal {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+
+  .story-caption {
+    bottom: 80px;
+    left: 12px;
+    right: 12px;
+    padding: 12px 16px;
+  }
+
+  .story-caption p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 769px) {
+  .story-modal-overlay {
+    align-items: center;
+  }
+
+  .story-modal {
+    border-radius: 20px;
+    max-height: 80vh;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.story-header-btn:focus-visible,
+.story-action-btn:focus-visible,
+.story-nav-hint:focus-visible,
+.comment-form button:focus-visible {
+  outline: 2px solid #0a66c2;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .story-action-btn,
+  .story-views,
+  .story-header-btn {
+    border-width: 2px;
+  }
+}

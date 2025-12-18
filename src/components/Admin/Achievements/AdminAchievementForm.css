@@ -1,0 +1,411 @@
+/* AdminAchievementForm.css - LinkedIn Standard Styling with AdAch-001- prefix */
+
+/* Root Variables */
+:root {
+  --linkedin-blue: #0a66c2;
+  --linkedin-blue-hover: #004182;
+  --linkedin-background: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-text-primary: #000000e6;
+  --linkedin-text-secondary: #00000099;
+  --linkedin-border: #00000014;
+  --linkedin-red: #cc1016;
+  --linkedin-green: #057642;
+}
+
+/* Base Form */
+.AdAch-001-admin-achievement-form {
+  background-color: var(--linkedin-white);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--linkedin-border);
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Form Header */
+.AdAch-001-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--linkedin-border);
+  position: sticky;
+  top: 0;
+  background-color: var(--linkedin-white);
+  z-index: 10;
+}
+
+.AdAch-001-form-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0;
+}
+
+.AdAch-001-close-btn {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.AdAch-001-close-btn:hover {
+  background-color: var(--linkedin-background);
+}
+
+/* Error Message */
+.AdAch-001-form-error {
+  background-color: #fff4f4;
+  border: 1px solid var(--linkedin-red);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--linkedin-red);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Form */
+.AdAch-001-achievement-form {
+  padding: 24px;
+}
+
+/* Section */
+.AdAch-001-form-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.AdAch-001-form-section:last-of-type {
+  border-bottom: none;
+}
+
+.AdAch-001-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 16px 0;
+}
+
+/* Form Row */
+.AdAch-001-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Form Group */
+.AdAch-001-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.AdAch-001-form-group:last-child {
+  margin-bottom: 0;
+}
+
+.AdAch-001-form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+}
+
+/* Inputs */
+.AdAch-001-form-group input[type="text"],
+.AdAch-001-form-group input[type="number"],
+.AdAch-001-form-group input[type="date"],
+.AdAch-001-form-group input[type="file"],
+.AdAch-001-form-group select,
+.AdAch-001-form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--linkedin-border);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  background-color: var(--linkedin-white);
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.AdAch-001-form-group input:hover,
+.AdAch-001-form-group select:hover,
+.AdAch-001-form-group textarea:hover {
+  border-color: #00000033;
+}
+
+.AdAch-001-form-group input:focus,
+.AdAch-001-form-group select:focus,
+.AdAch-001-form-group textarea:focus {
+  outline: none;
+  border-color: var(--linkedin-blue);
+  box-shadow: 0 0 0 1px var(--linkedin-blue);
+}
+
+.AdAch-001-form-group input::placeholder,
+.AdAch-001-form-group textarea::placeholder {
+  color: var(--linkedin-text-secondary);
+}
+
+/* Textarea */
+.AdAch-001-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Small Text */
+.AdAch-001-form-group small {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* Select */
+.AdAch-001-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* Icon Selector */
+.AdAch-001-icon-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.AdAch-001-icon-option {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--linkedin-border);
+  border-radius: 8px;
+  background-color: var(--linkedin-white);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AdAch-001-icon-option:hover {
+  border-color: var(--linkedin-blue);
+  background-color: #e7f3ff;
+}
+
+.AdAch-001-icon-option.AdAch-001-active {
+  border-color: var(--linkedin-blue);
+  background-color: #e7f3ff;
+}
+
+/* Current Image */
+.AdAch-001-current-image {
+  margin-top: 8px;
+  padding: 12px;
+  background-color: var(--linkedin-background);
+  border-radius: 8px;
+}
+
+.AdAch-001-current-image img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.AdAch-001-current-image p {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  margin: 0;
+}
+
+/* Highlight Group */
+.AdAch-001-highlight-group {
+  background-color: var(--linkedin-background);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.AdAch-001-highlight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.AdAch-001-highlight-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0;
+}
+
+.AdAch-001-remove-btn {
+  background: none;
+  border: 1px solid var(--linkedin-red);
+  color: var(--linkedin-red);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.AdAch-001-remove-btn:hover {
+  background-color: #fff4f4;
+}
+
+/* Add Button */
+.AdAch-001-add-btn {
+  background-color: var(--linkedin-background);
+  border: 1px solid var(--linkedin-border);
+  color: var(--linkedin-text-primary);
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.AdAch-001-add-btn:hover {
+  background-color: #e0dfdb;
+  border-color: #00000033;
+}
+
+/* Checkboxes */
+.AdAch-001-form-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.AdAch-001-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  font-weight: 400;
+}
+
+.AdAch-001-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--linkedin-blue);
+}
+
+/* Form Actions */
+.AdAch-001-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--linkedin-border);
+  margin-top: 24px;
+}
+
+/* Buttons */
+.AdAch-001-cancel-btn,
+.AdAch-001-submit-btn {
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-width: 100px;
+}
+
+.AdAch-001-cancel-btn {
+  background-color: transparent;
+  border: 1px solid var(--linkedin-border);
+  color: var(--linkedin-text-primary);
+}
+
+.AdAch-001-cancel-btn:hover {
+  background-color: var(--linkedin-background);
+}
+
+.AdAch-001-submit-btn {
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+}
+
+.AdAch-001-submit-btn:hover:not(:disabled) {
+  background-color: var(--linkedin-blue-hover);
+}
+
+.AdAch-001-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .AdAch-001-admin-achievement-form {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .AdAch-001-form-header,
+  .AdAch-001-achievement-form {
+    padding: 20px;
+  }
+
+  .AdAch-001-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .AdAch-001-icon-selector {
+    justify-content: center;
+  }
+
+  .AdAch-001-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .AdAch-001-cancel-btn,
+  .AdAch-001-submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .AdAch-001-form-header h2 {
+    font-size: 18px;
+  }
+
+  .AdAch-001-form-header,
+  .AdAch-001-achievement-form {
+    padding: 16px;
+  }
+}

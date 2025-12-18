@@ -1,0 +1,330 @@
+/* Help Center Page - LinkedIn Standard CSS */
+
+.hel-00011-container {
+  min-height: 100vh;
+  background-color: #f3f2ef;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.hel-00011-hero {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.hel-00011-hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 32px 0;
+  line-height: 1.25;
+}
+
+.hel-00011-search-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hel-00011-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.hel-00011-search-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  background-color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.hel-00011-search-input:focus {
+  border-color: #0a66c2;
+  box-shadow: 0 0 0 4px rgba(10, 102, 194, 0.15);
+}
+
+.hel-00011-search-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.hel-00011-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.hel-00011-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 24px 0;
+  line-height: 1.25;
+}
+
+.hel-00011-categories {
+  margin-bottom: 48px;
+}
+
+.hel-00011-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.hel-00011-category-card {
+  background-color: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  font-family: inherit;
+}
+
+.hel-00011-category-card:hover {
+  border-color: #0a66c2;
+  box-shadow: 0 0 0 1px #0a66c2, 0 4px 8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.hel-00011-category-active {
+  background-color: #e7f3ff;
+  border-color: #0a66c2;
+  box-shadow: 0 0 0 2px #0a66c2, 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.hel-00011-category-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.hel-00011-category-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.hel-00011-faqs {
+  margin-bottom: 48px;
+}
+
+.hel-00011-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hel-00011-faq-item {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.hel-00011-faq-item:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.hel-00011-faq-question {
+  width: 100%;
+  padding: 20px 24px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.hel-00011-faq-question:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.hel-00011-faq-icon {
+  width: 20px;
+  height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+.hel-00011-faq-icon-expanded {
+  transform: rotate(180deg);
+}
+
+.hel-00011-faq-answer {
+  padding: 0 24px 20px 24px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  animation: hel-00011-fadeIn 0.3s ease;
+}
+
+@keyframes hel-00011-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hel-00011-no-results {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 48px 24px;
+  text-align: center;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.hel-00011-no-results-icon {
+  width: 64px;
+  height: 64px;
+  color: rgba(0, 0, 0, 0.3);
+  margin: 0 auto 16px auto;
+  stroke-width: 2;
+}
+
+.hel-00011-no-results p {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.hel-00011-contact-section {
+  display: flex;
+  justify-content: center;
+}
+
+.hel-00011-contact-card {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hel-00011-contact-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  line-height: 1.25;
+}
+
+.hel-00011-contact-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+.hel-00011-contact-btn {
+  background-color: #ffffff;
+  color: #0a66c2;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hel-00011-contact-btn:hover {
+  background-color: #f3f2ef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.hel-00011-contact-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .hel-00011-hero {
+    padding: 48px 16px;
+  }
+
+  .hel-00011-hero-title {
+    font-size: 28px;
+  }
+
+  .hel-00011-content {
+    padding: 32px 16px;
+  }
+
+  .hel-00011-section-title {
+    font-size: 20px;
+  }
+
+  .hel-00011-category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .hel-00011-category-card {
+    padding: 16px 12px;
+  }
+
+  .hel-00011-faq-question {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .hel-00011-faq-answer {
+    padding: 0 16px 16px 16px;
+    font-size: 13px;
+  }
+
+  .hel-00011-contact-card {
+    padding: 32px 24px;
+  }
+
+  .hel-00011-contact-title {
+    font-size: 20px;
+  }
+
+  .hel-00011-contact-text {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,488 @@
+:root {
+  --linkedin-blue: #0a66c2;
+  --linkedin-blue-hover: #004182;
+  --linkedin-background: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-text-primary: #000000e6;
+  --linkedin-text-secondary: #00000099;
+  --linkedin-border: #00000014;
+  --linkedin-red: #cc1016;
+  --linkedin-green: #057642;
+  --linkedin-orange: #f5a623;
+}
+
+/* Base */
+.ach-5001-admin-dashboard {
+  margin: 3rem auto;
+  background-color: var(--linkedin-background);
+  min-height: 100vh;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Header */
+.ach-5001-admin-header {
+  background-color: var(--linkedin-white);
+  border-bottom: 1px solid var(--linkedin-border);
+  padding: 24px 0;
+}
+
+.ach-5001-admin-header-content {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ach-5001-admin-header-content h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.ach-5001-admin-header-content p {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  margin: 0;
+}
+
+/* Tabs */
+.ach-5001-admin-tabs {
+  background-color: var(--linkedin-white);
+  border-bottom: 1px solid var(--linkedin-border);
+  display: flex;
+  gap: 8px;
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ach-5001-admin-tab {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ach-5001-admin-tab:hover {
+  color: var(--linkedin-text-primary);
+}
+
+.ach-5001-admin-tab.ach-5001-active {
+  color: var(--linkedin-blue);
+  border-bottom-color: var(--linkedin-blue);
+}
+
+/* Content */
+.ach-5001-admin-content {
+  max-width: 1128px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+/* Overview */
+.ach-5001-admin-overview h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 20px 0;
+}
+
+.ach-5001-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.ach-5001-stat-card {
+  background-color: var(--linkedin-white);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--linkedin-border);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.ach-5001-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.ach-5001-stat-card.ach-5001-highlight {
+  background-color: #e7f3ff;
+  border: 1px solid var(--linkedin-blue);
+}
+
+.ach-5001-stat-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.ach-5001-stat-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin-bottom: 4px;
+}
+
+.ach-5001-stat-label {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* Stats Details */
+.ach-5001-stats-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.ach-5001-stats-section {
+  background-color: var(--linkedin-white);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--linkedin-border);
+  padding: 20px;
+}
+
+.ach-5001-stats-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.ach-5001-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ach-5001-stats-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.ach-5001-stats-item:hover {
+  background-color: var(--linkedin-background);
+}
+
+.ach-5001-stats-item-label {
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  font-weight: 500;
+}
+
+.ach-5001-stats-item-value {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  font-weight: 600;
+}
+
+/* Achievements Section */
+.ach-5001-admin-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ach-5001-admin-section-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0;
+}
+
+.ach-5001-btn-create {
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ach-5001-btn-create:hover {
+  background-color: var(--linkedin-blue-hover);
+}
+
+/* Table */
+.ach-5001-achievements-table {
+  background-color: var(--linkedin-white);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--linkedin-border);
+  overflow: hidden;
+}
+
+.ach-5001-achievements-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ach-5001-achievements-table thead {
+  background-color: var(--linkedin-background);
+}
+
+.ach-5001-achievements-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--linkedin-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ach-5001-achievements-table td {
+  padding: 16px;
+  border-top: 1px solid var(--linkedin-border);
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+}
+
+.ach-5001-achievements-table tbody tr:hover {
+  background-color: var(--linkedin-background);
+}
+
+.ach-5001-table-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ach-5001-table-icon {
+  font-size: 20px;
+}
+
+/* Status Badges */
+.ach-5001-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.ach-5001-status-badge.ach-5001-published {
+  background-color: #e6f4ea;
+  color: var(--linkedin-green);
+}
+
+.ach-5001-status-badge.ach-5001-draft {
+  background-color: #fff4e6;
+  color: var(--linkedin-orange);
+}
+
+.ach-5001-status-badge.ach-5001-featured {
+  background-color: #e7f3ff;
+  color: var(--linkedin-blue);
+}
+
+.ach-5001-status-badge.ach-5001-major {
+  background-color: #fff4f4;
+  color: var(--linkedin-red);
+}
+
+/* Table Actions */
+.ach-5001-table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.ach-5001-btn-edit,
+.ach-5001-btn-delete {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ach-5001-btn-edit {
+  background-color: transparent;
+  border: 1px solid var(--linkedin-border);
+  color: var(--linkedin-text-primary);
+}
+
+.ach-5001-btn-edit:hover {
+  background-color: var(--linkedin-background);
+}
+
+.ach-5001-btn-delete {
+  background-color: transparent;
+  border: 1px solid var(--linkedin-red);
+  color: var(--linkedin-red);
+}
+
+.ach-5001-btn-delete:hover {
+  background-color: #fff4f4;
+}
+
+/* Empty State */
+.ach-5001-empty-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.ach-5001-empty-state p {
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+  margin: 0;
+}
+
+/* Settings */
+.ach-5001-admin-settings h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 24px 0;
+}
+
+.ach-5001-settings-section {
+  background-color: var(--linkedin-white);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--linkedin-border);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.ach-5001-settings-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 16px 0;
+}
+
+.ach-5001-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ach-5001-action-btn {
+  background-color: var(--linkedin-background);
+  border: 1px solid var(--linkedin-border);
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ach-5001-action-btn:hover {
+  background-color: #e0dfdb;
+  border-color: #00000033;
+}
+
+.ach-5001-info-box {
+  background-color: var(--linkedin-background);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ach-5001-info-box p {
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.ach-5001-info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.ach-5001-info-box strong {
+  font-weight: 600;
+}
+
+/* Form Modal */
+.ach-5001-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+/* Loading */
+.ach-5001-loading-spinner {
+  text-align: center;
+  padding: 40px;
+  font-size: 14px;
+  color: var(--linkedin-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ach-5001-admin-header-content,
+  .ach-5001-admin-tabs,
+  .ach-5001-admin-content {
+    padding: 0 16px;
+  }
+
+  .ach-5001-admin-header-content h1 {
+    font-size: 24px;
+  }
+
+  .ach-5001-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ach-5001-stats-details {
+    grid-template-columns: 1fr;
+  }
+
+  .ach-5001-admin-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ach-5001-achievements-table {
+    overflow-x: auto;
+  }
+
+  .ach-5001-achievements-table table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ach-5001-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ach-5001-admin-tabs {
+    overflow-x: auto;
+  }
+
+  .ach-5001-quick-actions {
+    flex-direction: column;
+  }
+
+  .ach-5001-action-btn {
+    width: 100%;
+  }
+}

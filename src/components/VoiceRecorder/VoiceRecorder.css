@@ -1,0 +1,553 @@
+/* Facebook-Style Voice Recorder - Complete CSS */
+
+/* Overlay */
+.voice-recorder-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeIn 0.2s ease-in-out;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.voice-recorder-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.voice-recorder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e4e6eb;
+  background-color: #ffffff;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.voice-recorder-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #050505;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #65676b;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  padding: 0;
+}
+
+.close-btn:hover {
+  background-color: #f0f2f5;
+}
+
+.close-btn:active {
+  background-color: #e4e6eb;
+  transform: scale(0.95);
+}
+
+/* Body */
+.voice-recorder-body {
+  padding: 32px 24px;
+  background-color: #f0f2f5;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Testing State */
+.testing-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.testing-state p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Recording Animation */
+.recording-animation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 3px solid #0084ff;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.recording-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #0084ff 0%, #0066cc 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  box-shadow: 0 4px 12px rgba(0, 132, 255, 0.3);
+  z-index: 1;
+  animation: recordingPulse 1s ease-in-out infinite;
+}
+
+@keyframes recordingPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Audio Level Indicator */
+.audio-level-indicator {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.level-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+.level-bar {
+  width: 6px;
+  border-radius: 3px;
+  transition: height 0.1s ease, background-color 0.1s ease;
+  min-height: 10px;
+}
+
+.level-bar.active {
+  background-color: #0084ff !important;
+  box-shadow: 0 0 8px rgba(0, 132, 255, 0.5);
+}
+
+.level-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #050505;
+  margin: 0;
+  text-align: center;
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Recording Timer */
+.recording-timer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #0084ff;
+  margin: 20px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Audio Preview */
+.audio-preview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.audio-player-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.audio-player-container audio {
+  outline: none;
+  border: 1px solid #e4e6eb;
+}
+
+.audio-player-container audio::-webkit-media-controls-panel {
+  background-color: #ffffff;
+}
+
+.preview-hint {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #65676b;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+/* Waveform Container */
+.waveform-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 60px;
+  margin: 20px 0;
+}
+
+.waveform-bar {
+  width: 4px;
+  background-color: #0084ff;
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.waveform-bar.active {
+  animation: waveform 0.6s ease-in-out infinite;
+}
+
+@keyframes waveform {
+  0%, 100% {
+    height: 20px;
+  }
+  50% {
+    height: 60px;
+  }
+}
+
+/* Footer */
+.voice-recorder-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #e4e6eb;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+/* Buttons - Facebook Style */
+.stop-recording-btn,
+.cancel-btn,
+.send-voice-btn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  white-space: nowrap;
+}
+
+.stop-recording-btn {
+  background-color: #0084ff;
+  color: #ffffff;
+  flex: 1;
+  box-shadow: 0 2px 4px rgba(0, 132, 255, 0.2);
+}
+
+.stop-recording-btn:hover {
+  background-color: #0077e6;
+  box-shadow: 0 4px 8px rgba(0, 132, 255, 0.3);
+}
+
+.stop-recording-btn:active {
+  background-color: #0066cc;
+  transform: scale(0.98);
+}
+
+.stop-recording-btn:disabled {
+  background-color: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cancel-btn {
+  background-color: #e4e6eb;
+  color: #050505;
+  padding: 10px 20px;
+}
+
+.cancel-btn:hover {
+  background-color: #d8dadf;
+}
+
+.cancel-btn:active {
+  background-color: #ccd0d5;
+  transform: scale(0.98);
+}
+
+.send-voice-btn {
+  background-color: #0084ff;
+  color: #ffffff;
+  padding: 10px 24px;
+  box-shadow: 0 2px 4px rgba(0, 132, 255, 0.2);
+}
+
+.send-voice-btn:hover {
+  background-color: #0077e6;
+  box-shadow: 0 4px 8px rgba(0, 132, 255, 0.3);
+}
+
+.send-voice-btn:active {
+  background-color: #0066cc;
+  transform: scale(0.98);
+}
+
+.send-voice-btn:disabled {
+  background-color: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 520px) {
+  .voice-recorder-overlay {
+    padding: 10px;
+  }
+
+  .voice-recorder-modal {
+    width: 95%;
+    max-height: 95vh;
+    margin: 0;
+  }
+
+  .voice-recorder-header h3 {
+    font-size: 18px;
+  }
+
+  .voice-recorder-body {
+    padding: 24px 16px;
+    min-height: 200px;
+  }
+
+  .recording-timer {
+    font-size: 28px;
+  }
+
+  .pulse-ring {
+    width: 100px;
+    height: 100px;
+  }
+
+  .recording-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .level-bars {
+    height: 60px;
+  }
+
+  .voice-recorder-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stop-recording-btn,
+  .cancel-btn,
+  .send-voice-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .voice-recorder-overlay {
+    padding: 5px;
+  }
+
+  .voice-recorder-modal {
+    max-height: 98vh;
+  }
+
+  .voice-recorder-header {
+    padding: 12px 16px;
+  }
+
+  .voice-recorder-body {
+    padding: 20px 12px;
+    min-height: 180px;
+  }
+
+  .voice-recorder-footer {
+    padding: 12px 16px;
+  }
+
+  .level-bars {
+    gap: 3px;
+  }
+
+  .level-bar {
+    width: 5px;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .voice-recorder-modal {
+    background: #242526;
+  }
+
+  .voice-recorder-header {
+    background-color: #242526;
+    border-bottom-color: #3a3b3c;
+  }
+
+  .voice-recorder-header h3 {
+    color: #e4e6eb;
+  }
+
+  .close-btn {
+    color: #b0b3b8;
+  }
+
+  .close-btn:hover {
+    background-color: #3a3b3c;
+  }
+
+  .voice-recorder-body {
+    background-color: #18191a;
+  }
+
+  .recording-timer {
+    color: #2d88ff;
+  }
+
+  .level-text {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+  }
+
+  .preview-hint {
+    color: #b0b3b8;
+  }
+
+  .voice-recorder-footer {
+    background-color: #242526;
+    border-top-color: #3a3b3c;
+  }
+
+  .cancel-btn {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+  }
+
+  .cancel-btn:hover {
+    background-color: #4e4f50;
+  }
+
+  .audio-player-container audio {
+    border-color: #3a3b3c;
+  }
+
+  .audio-player-container audio::-webkit-media-controls-panel {
+    background-color: #3a3b3c;
+  }
+}
+
+/* Accessibility */
+.voice-recorder-modal:focus-visible,
+.stop-recording-btn:focus-visible,
+.cancel-btn:focus-visible,
+.send-voice-btn:focus-visible,
+.close-btn:focus-visible {
+  outline: 2px solid #0084ff;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .voice-recorder-overlay {
+    display: none;
+  }
+}

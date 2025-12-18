@@ -1,0 +1,169 @@
+/* ========================================
+   UNIVERSAL STORY RING STYLES
+   Add this to a new file: src/components/StoryRing/StoryRing.css
+   ======================================== */
+
+/* Story Ring Wrapper */
+.story-ring-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The gradient ring */
+.story-ring-gradient {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  padding: 3px;
+  z-index: 1;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* Inner white ring (creates the gap) */
+.story-ring-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: white;
+  padding: 3px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The actual avatar image */
+.story-ring-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  z-index: 3;
+}
+
+/* Pulse animation for story ring */
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Hover effect */
+.story-ring-wrapper:hover .story-ring-gradient {
+  animation: pulse-ring 1s ease-in-out infinite;
+}
+
+/* Size variants */
+.story-ring-wrapper.size-small {
+  width: 40px;
+  height: 40px;
+}
+
+.story-ring-wrapper.size-medium {
+  width: 60px;
+  height: 60px;
+}
+
+.story-ring-wrapper.size-large {
+  width: 80px;
+  height: 80px;
+}
+
+.story-ring-wrapper.size-xlarge {
+  width: 120px;
+  height: 120px;
+}
+
+/* For profile page large avatar */
+.story-ring-wrapper.size-profile {
+  width: 180px;
+  height: 180px;
+}
+
+.story-ring-wrapper.size-profile .story-ring-gradient {
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  padding: 4px;
+}
+
+.story-ring-wrapper.size-profile .story-ring-inner {
+  padding: 4px;
+}
+
+/* Story indicator dot (optional) */
+.story-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(45deg, #f09433, #dc2743);
+  border: 2px solid white;
+  border-radius: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+/* No story - regular avatar */
+.story-ring-wrapper.no-story .story-ring-gradient {
+  display: none;
+}
+
+.story-ring-wrapper.no-story .story-ring-inner {
+  padding: 0;
+  background: transparent;
+}
+
+/* Viewed story - gray ring */
+.story-ring-wrapper.viewed .story-ring-gradient {
+  background: #c4c4c4;
+  animation: none;
+}
+
+/* Loading state */
+.story-ring-wrapper.loading .story-ring-gradient {
+  background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .story-ring-wrapper.size-large {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .story-ring-wrapper.size-profile {
+    width: 140px;
+    height: 140px;
+  }
+}

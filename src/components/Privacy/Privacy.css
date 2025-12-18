@@ -1,0 +1,304 @@
+/* Privacy Page - LinkedIn Standard CSS */
+
+.pri-99001-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f2ef;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+.pri-99001-sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.pri-99001-sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.pri-99001-sidebar-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.pri-99001-nav {
+  padding: 16px 0;
+}
+
+.pri-99001-nav-item {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+  border-left: 3px solid transparent;
+}
+
+.pri-99001-nav-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.pri-99001-nav-active {
+  background-color: rgba(10, 102, 194, 0.08);
+  border-left-color: #0a66c2;
+}
+
+.pri-99001-nav-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.pri-99001-nav-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.pri-99001-nav-active .pri-99001-nav-text {
+  color: #0a66c2;
+  font-weight: 600;
+}
+
+.pri-99001-main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.pri-99001-content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.pri-99001-header {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.pri-99001-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+}
+
+.pri-99001-updated {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.pri-99001-content {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.pri-99001-paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  white-space: pre-wrap;
+}
+
+.pri-99001-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.pri-99001-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.pri-99001-action-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.pri-99001-primary-btn {
+  background-color: #0a66c2;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pri-99001-primary-btn:hover {
+  background-color: #004182;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.pri-99001-primary-btn:active {
+  transform: scale(0.98);
+}
+
+.pri-99001-secondary-btn {
+  background-color: #ffffff;
+  color: #0a66c2;
+  border: 2px solid #0a66c2;
+}
+
+.pri-99001-secondary-btn:hover {
+  background-color: rgba(10, 102, 194, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pri-99001-secondary-btn:active {
+  transform: scale(0.98);
+}
+
+.pri-99001-footer-note {
+  background-color: #fff3cd;
+  border: 1px solid #ffd966;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.pri-99001-info-icon {
+  width: 24px;
+  height: 24px;
+  color: #856404;
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+.pri-99001-footer-note p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #856404;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .pri-99001-container {
+    flex-direction: column;
+  }
+
+  .pri-99001-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .pri-99001-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+
+  .pri-99001-nav-item {
+    flex-direction: column;
+    padding: 12px 16px;
+    min-width: 100px;
+    text-align: center;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+
+  .pri-99001-nav-active {
+    border-left-color: transparent;
+    border-bottom-color: #0a66c2;
+  }
+
+  .pri-99001-nav-icon {
+    font-size: 24px;
+  }
+
+  .pri-99001-nav-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pri-99001-content-wrapper {
+    padding: 24px 16px;
+  }
+
+  .pri-99001-header {
+    padding: 24px 20px;
+  }
+
+  .pri-99001-title {
+    font-size: 24px;
+  }
+
+  .pri-99001-content {
+    padding: 24px 20px;
+  }
+
+  .pri-99001-paragraph {
+    font-size: 14px;
+  }
+
+  .pri-99001-actions {
+    flex-direction: column;
+  }
+
+  .pri-99001-action-btn {
+    width: 100%;
+  }
+
+  .pri-99001-footer-note {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.pri-99001-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pri-99001-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.pri-99001-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.pri-99001-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

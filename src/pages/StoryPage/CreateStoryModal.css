@@ -1,0 +1,902 @@
+/* ============================================
+   CREATE STORY MODAL - LinkedIn Professional Standard
+   ============================================ */
+
+/* Modal Overlay */
+.create-story-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.create-story-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   MODAL HEADER
+   ============================================ */
+
+.create-story-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.create-story-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  letter-spacing: -0.2px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #6b7280;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+  transform: rotate(90deg);
+}
+
+.close-btn:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* ============================================
+   MODAL BODY
+   ============================================ */
+
+.create-story-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+  background: #f9fafb;
+}
+
+.create-story-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.create-story-body::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.create-story-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.create-story-body::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================================
+   STORY TYPE SELECTOR
+   ============================================ */
+
+.story-type-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.type-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.type-btn:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.type-btn.active {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #fff;
+  border-color: #0a66c2;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   TEXT STORY CREATOR
+   ============================================ */
+
+.text-story-creator {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-story-preview {
+  width: 100%;
+  height: 450px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.text-story-preview:hover {
+  transform: scale(1.01);
+}
+
+.story-text-input {
+  width: 90%;
+  height: 90%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 24px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  line-height: 1.4;
+}
+
+.story-text-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sticker-item {
+  position: absolute;
+  cursor: move;
+  user-select: none;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.sticker-item:hover {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   TEXT CONTROLS
+   ============================================ */
+
+.text-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.control-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.2px;
+}
+
+.control-group select,
+.control-group input[type="color"] {
+  padding: 10px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  transition: all 0.2s ease;
+  background: #fff;
+  cursor: pointer;
+}
+
+.control-group select:hover,
+.control-group input[type="color"]:hover {
+  border-color: #cbd5e1;
+}
+
+.control-group select:focus,
+.control-group input[type="color"]:focus {
+  border-color: #0a66c2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.control-group input[type="color"] {
+  height: 44px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+/* ============================================
+   BACKGROUND SELECTOR
+   ============================================ */
+
+.background-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.background-selector label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.2px;
+}
+
+.gradient-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gradient-option {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-option::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.gradient-option:hover {
+  border-color: #0a66c2;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-option:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   EMOJI SECTION
+   ============================================ */
+
+.emoji-section {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.add-emoji-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-emoji-btn:hover {
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.add-emoji-btn:active {
+  transform: translateY(0);
+}
+
+.emoji-picker {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  right: 20px;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  animation: slideDown 0.3s ease-out;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emoji-picker::-webkit-scrollbar {
+  width: 6px;
+}
+
+.emoji-picker::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 3px;
+}
+
+.emoji-picker::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.emoji-option {
+  font-size: 36px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-option:hover {
+  transform: scale(1.2);
+  background: #f3f4f6;
+}
+
+.emoji-option:active {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   MEDIA STORY CREATOR
+   ============================================ */
+
+.media-story-creator {
+  animation: slideIn 0.4s ease-out;
+}
+
+.story-upload-area {
+  text-align: center;
+  padding: 64px 24px;
+  border: 3px dashed #cbd5e1;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #fff 0%, #f9fafb 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.story-upload-area:hover {
+  border-color: #0a66c2;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.upload-icon {
+  font-size: 72px;
+  margin-bottom: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.story-upload-area h3 {
+  margin: 12px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.story-upload-area p {
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+  border: none;
+}
+
+.upload-btn:hover {
+  background: linear-gradient(135deg, #004182 0%, #002850 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4);
+}
+
+.upload-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   MEDIA PREVIEW
+   ============================================ */
+
+.media-preview-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.media-item {
+  position: relative;
+  aspect-ratio: 9/16;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeInScale 0.4s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.media-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.preview-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-media-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.remove-media-btn:hover {
+  background: rgba(220, 38, 38, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.remove-media-btn:active {
+  transform: scale(0.95) rotate(90deg);
+}
+
+.add-more-btn {
+  padding: 12px 24px;
+  background: #fff;
+  border: 2px dashed #0a66c2;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a66c2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.add-more-btn:hover {
+  background: #eff6ff;
+  border-color: #004182;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.15);
+}
+
+.add-more-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   CAPTION AREA
+   ============================================ */
+
+.caption-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.caption-area textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  resize: none;
+  transition: all 0.2s ease;
+  line-height: 1.5;
+}
+
+.caption-area textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.caption-area textarea:focus {
+  border-color: #0a66c2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.caption-area textarea::placeholder {
+  color: #9ca3af;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.create-story-footer {
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.btn-cancel,
+.btn-create {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-create {
+  background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+  color: #fff;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+.btn-create:hover {
+  background: linear-gradient(135deg, #004182 0%, #002850 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 102, 194, 0.4);
+}
+
+.btn-create:active,
+.btn-cancel:active {
+  transform: translateY(0);
+}
+
+.btn-create:disabled,
+.btn-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-create:disabled:hover,
+.btn-cancel:disabled:hover {
+  transform: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .create-story-modal {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+  }
+
+  .create-story-header {
+    padding: 16px 20px;
+  }
+
+  .create-story-header h2 {
+    font-size: 18px;
+  }
+
+  .create-story-body {
+    padding: 20px 16px;
+  }
+
+  .text-story-preview {
+    height: 380px;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .text-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .control-group {
+    min-width: 100%;
+  }
+
+  .gradient-options {
+    gap: 10px;
+  }
+
+  .gradient-option {
+    width: 48px;
+    height: 48px;
+  }
+
+  .emoji-picker {
+    left: 16px;
+    right: 16px;
+  }
+
+  .create-story-footer {
+    padding: 16px 20px;
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancel,
+  .btn-create {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-type-selector {
+    gap: 8px;
+  }
+
+  .type-btn {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .text-story-preview {
+    height: 320px;
+  }
+
+  .upload-icon {
+    font-size: 56px;
+  }
+
+  .story-upload-area h3 {
+    font-size: 19px;
+  }
+
+  .story-upload-area p {
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.type-btn:focus-visible,
+.add-emoji-btn:focus-visible,
+.upload-btn:focus-visible,
+.add-more-btn:focus-visible,
+.btn-cancel:focus-visible,
+.btn-create:focus-visible,
+.close-btn:focus-visible {
+  outline: 3px solid #0a66c2;
+  outline-offset: 2px;
+}
+
+.control-group select:focus-visible,
+.control-group input:focus-visible,
+.caption-area textarea:focus-visible {
+  outline: 3px solid #0a66c2;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .type-btn.active,
+  .story-upload-area,
+  .add-more-btn,
+  .btn-create {
+    border-width: 3px;
+  }
+
+  .gradient-option {
+    border-width: 4px;
+  }
+}

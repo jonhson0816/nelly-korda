@@ -1,0 +1,787 @@
+/* ========================================
+   VARIABLES - LinkedIn/Facebook Style
+======================================== */
+:root {
+  --pb-primary: #0a66c2;
+  --pb-primary-hover: #004182;
+  --pb-secondary: #1877f2;
+  --pb-success: #4CAF50;
+  --pb-warning: #FF9800;
+  --pb-danger: #F44336;
+  --pb-background: #ffffff;
+  --pb-card-bg: #ffffff;
+  --pb-text-primary: #000000e6;
+  --pb-text-secondary: #00000099;
+  --pb-border: #00000014;
+  --pb-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  
+  /* Tier Colors */
+  --pb-tier-common: #9E9E9E;
+  --pb-tier-uncommon: #4CAF50;
+  --pb-tier-rare: #2196F3;
+  --pb-tier-epic: #9C27B0;
+  --pb-tier-legendary: #FFD700;
+}
+
+/* ========================================
+   LOADING STATE
+======================================== */
+.points-badge-loading {
+  padding: 16px;
+}
+
+.points-badge-skeleton {
+  height: 120px;
+  background: linear-gradient(
+    90deg,
+    var(--pb-border) 25%,
+    rgba(0, 0, 0, 0.05) 50%,
+    var(--pb-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========================================
+   COMPACT VERSION (Sidebar)
+======================================== */
+.points-badge-compact {
+  background: var(--pb-card-bg);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: var(--pb-shadow);
+}
+
+.points-badge-header-compact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--pb-border);
+}
+
+.points-badge-icon {
+  font-size: 32px;
+  animation: pulse-icon 2s infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.points-badge-info-compact {
+  display: flex;
+  flex-direction: column;
+}
+
+.points-badge-points-compact {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--pb-primary);
+  line-height: 1;
+}
+
+.points-badge-label-compact {
+  font-size: 12px;
+  color: var(--pb-text-secondary);
+  margin-top: 2px;
+}
+
+/* Level Section Compact */
+.points-badge-level-compact {
+  margin-bottom: 16px;
+}
+
+.points-badge-level-info {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.points-badge-level-number {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--pb-text-primary);
+}
+
+.points-badge-level-title {
+  font-size: 12px;
+  color: var(--pb-text-secondary);
+}
+
+.points-badge-progress-bar {
+  height: 8px;
+  background: var(--pb-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.points-badge-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pb-primary), var(--pb-secondary));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.points-badge-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.points-badge-progress-text {
+  font-size: 11px;
+  color: var(--pb-text-secondary);
+  display: block;
+  text-align: right;
+}
+
+/* Badges Section Compact */
+.points-badge-badges-compact {
+  padding-top: 12px;
+  border-top: 1px solid var(--pb-border);
+}
+
+.points-badge-badges-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.points-badge-badges-icon {
+  font-size: 16px;
+}
+
+.points-badge-badges-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+}
+
+.points-badge-badges-grid-compact {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.points-badge-item-compact {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pb-background);
+  border: 2px solid var(--pb-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.points-badge-item-compact:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.points-badge-item-icon {
+  font-size: 20px;
+}
+
+/* ========================================
+   FULL VERSION (Profile)
+======================================== */
+.points-badge-display {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.points-badge-card {
+  background: var(--pb-card-bg);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--pb-shadow);
+}
+
+.points-badge-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--pb-border);
+}
+
+.points-badge-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.points-badge-title-icon {
+  font-size: 24px;
+}
+
+/* Stats Grid */
+.points-badge-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.points-badge-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.05), rgba(24, 119, 242, 0.05));
+  border-radius: 8px;
+  border: 1px solid var(--pb-border);
+  transition: all 0.2s ease;
+}
+
+.points-badge-stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.points-badge-stat-icon {
+  font-size: 32px;
+}
+
+.points-badge-stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.points-badge-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pb-primary);
+  line-height: 1.2;
+}
+
+.points-badge-stat-label {
+  font-size: 12px;
+  color: var(--pb-text-secondary);
+  margin-top: 2px;
+}
+
+/* Level Section Full */
+.points-badge-level-section {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.08), rgba(24, 119, 242, 0.08));
+  border-radius: 12px;
+  border: 1px solid var(--pb-border);
+}
+
+.points-badge-level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.points-badge-level-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+}
+
+.points-badge-level-next {
+  font-size: 13px;
+  color: var(--pb-text-secondary);
+  font-weight: 500;
+}
+
+.points-badge-progress-bar-full {
+  height: 24px;
+  background: var(--pb-background);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.points-badge-progress-fill-full {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pb-primary), var(--pb-secondary));
+  border-radius: 12px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.points-badge-progress-fill-full::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+.points-badge-progress-percentage {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.points-badge-progress-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--pb-text-secondary);
+  font-weight: 500;
+}
+
+/* ========================================
+   BADGES SECTION
+======================================== */
+.points-badge-badges-section {
+  background: var(--pb-card-bg);
+  border: 1px solid var(--pb-border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--pb-shadow);
+}
+
+.points-badge-badges-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px 0;
+}
+
+.points-badge-badges-title-icon {
+  font-size: 24px;
+}
+
+.points-badge-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.points-badge-item {
+  background: var(--pb-background);
+  border: 2px solid var(--pb-border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.points-badge-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.03) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.points-badge-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.points-badge-item:hover::before {
+  opacity: 1;
+}
+
+/* Badge Tier Styles */
+.points-badge-item.tier-common {
+  border-color: var(--pb-tier-common);
+}
+
+.points-badge-item.tier-uncommon {
+  border-color: var(--pb-tier-uncommon);
+}
+
+.points-badge-item.tier-rare {
+  border-color: var(--pb-tier-rare);
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.2);
+}
+
+.points-badge-item.tier-epic {
+  border-color: var(--pb-tier-epic);
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
+}
+
+.points-badge-item.tier-legendary {
+  border-color: var(--pb-tier-legendary);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 237, 78, 0.05));
+}
+
+.points-badge-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.points-badge-item-icon-large {
+  font-size: 40px;
+  display: block;
+}
+
+.points-badge-item-tier {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.points-badge-item-tier.tier-common {
+  background: var(--pb-tier-common);
+  color: #ffffff;
+}
+
+.points-badge-item-tier.tier-uncommon {
+  background: var(--pb-tier-uncommon);
+  color: #ffffff;
+}
+
+.points-badge-item-tier.tier-rare {
+  background: var(--pb-tier-rare);
+  color: #ffffff;
+}
+
+.points-badge-item-tier.tier-epic {
+  background: var(--pb-tier-epic);
+  color: #ffffff;
+}
+
+.points-badge-item-tier.tier-legendary {
+  background: var(--pb-tier-legendary);
+  color: #000000;
+  animation: legendary-glow 2s infinite;
+}
+
+@keyframes legendary-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(255, 215, 0, 0.6); }
+  50% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.9); }
+}
+
+.points-badge-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.points-badge-item-description {
+  font-size: 12px;
+  color: var(--pb-text-secondary);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.points-badge-item-date {
+  font-size: 11px;
+  color: var(--pb-text-secondary);
+  display: block;
+}
+
+/* ========================================
+   NEW BADGE MODAL
+======================================== */
+.points-badge-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: modal-fade-in 0.3s ease;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.points-badge-modal {
+  background: var(--pb-card-bg);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: modal-slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+@keyframes modal-slide-up {
+  from { 
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.points-badge-modal-confetti {
+  font-size: 32px;
+  margin-bottom: 20px;
+  animation: confetti-bounce 0.8s ease infinite;
+}
+
+@keyframes confetti-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.points-badge-modal-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--pb-primary);
+  margin: 0 0 24px 0;
+}
+
+.points-badge-modal-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.points-badge-modal-badge {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(10, 102, 194, 0.05), rgba(24, 119, 242, 0.05));
+  border-radius: 12px;
+  border: 2px solid var(--pb-primary);
+}
+
+.points-badge-modal-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 12px;
+  animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.points-badge-modal-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.points-badge-modal-desc {
+  font-size: 14px;
+  color: var(--pb-text-secondary);
+  margin: 0;
+}
+
+.points-badge-modal-close {
+  padding: 12px 32px;
+  background: var(--pb-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.points-badge-modal-close:hover {
+  background: var(--pb-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}
+
+/* ========================================
+   LEVEL UP ANIMATION
+======================================== */
+.points-badge-levelup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 102, 194, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  animation: levelup-fade-in 0.5s ease;
+}
+
+.points-badge-levelup {
+  text-align: center;
+  animation: levelup-bounce 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+@keyframes levelup-bounce {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.points-badge-levelup-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  animation: flash-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes flash-pulse {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.points-badge-levelup-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 4px;
+}
+
+.points-badge-levelup-level {
+  margin-bottom: 16px;
+}
+
+.points-badge-levelup-number {
+  font-size: 120px;
+  font-weight: 900;
+  color: #FFD700;
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  display: block;
+  line-height: 1;
+}
+
+.points-badge-levelup-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+  .points-badge-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .points-badge-stat-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .points-badge-stat-icon {
+    font-size: 28px;
+  }
+
+  .points-badge-stat-value {
+    font-size: 18px;
+  }
+
+  .points-badge-badges-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .points-badge-modal {
+    padding: 24px;
+    width: 95%;
+  }
+
+  .points-badge-modal-title {
+    font-size: 24px;
+  }
+
+  .points-badge-modal-icon {
+    font-size: 48px;
+  }
+
+  .points-badge-levelup-title {
+    font-size: 36px;
+  }
+
+  .points-badge-levelup-number {
+    font-size: 80px;
+  }
+}
