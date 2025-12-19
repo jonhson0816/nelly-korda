@@ -1933,6 +1933,7 @@
    ============================================ */
 @media (min-width: 768px) {
   .messenger-sidebar {
+    margin: 3rem auto;
     width: 360px;
     display: flex !important;
   }
@@ -2032,7 +2033,7 @@
 }
 
 /* Dark mode support (optional - add if needed) */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #18191a;
     --sidebar-bg: #242526;
@@ -2042,7 +2043,7 @@
     --border-color: #3e4042;
     --hover-bg: #3a3b3c;
   }
-}
+} */
 
 /* ============================================
    CRITICAL MOBILE FIXES FOR iOS SAFARI
