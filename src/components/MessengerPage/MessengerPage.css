@@ -1,11 +1,3 @@
-/* ============================================
-   FACEBOOK MESSENGER - MOBILE-FIRST CSS
-   Perfect for iPhone, Android, Tablet & Desktop
-   ============================================ */
-
-/* ============================================
-   ROOT VARIABLES & RESET
-   ============================================ */
 :root {
   --primary-blue: #0084ff;
   --primary-hover: #0073e6;
@@ -37,17 +29,17 @@
    ============================================ */
 .messenger-container {
   display: flex;
-  height: 100vh;
-  height: 100dvh; /* Dynamic viewport height for mobile */
+  height: calc(100vh - 60px);
+  height: calc(100dvh - 60px);
   background: var(--background);
   overflow: hidden;
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  z-index: 999; /* Ensure messenger is above footer */
+  z-index: 100;
 }
 
 /* ============================================
@@ -81,7 +73,6 @@
   min-height: var(--header-height);
   position: sticky;
   top: 0;
-  z-index: 10;
 }
 
 .sidebar-header h2 {
@@ -366,7 +357,6 @@
   min-height: var(--header-height);
   position: sticky;
   top: 0;
-  z-index: 10;
   gap: 12px;
 }
 
