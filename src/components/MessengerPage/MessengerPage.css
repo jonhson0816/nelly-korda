@@ -2210,11 +2210,17 @@ iframe {
 @media (max-width: 768px) {
   .messenger-container {
     margin-top: 52px;
+    height: calc(100vh - 52px);
+    position: fixed;
+    top: 52px;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   /* ✅ New Chat Modal on Mobile */
   .new-chat-modal {
-    top: 0; /* Starts from sidebar top, which already has margin */
+    top: 0;
   }
 
   /* Sidebar Full Width on Mobile */
@@ -2229,21 +2235,88 @@ iframe {
     position: absolute;
   }
 
-  /* Chat Area Full Screen on Mobile */
+  /* ✅ FIXED: Chat Area Full Screen on Mobile */
   .messenger-chat {
     position: fixed;
-    top: 52px; /* ✅ FIXED: Add navbar height offset */
+    top: 52px;
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+    height: calc(100vh - 52px);
     z-index: 200;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    height: calc(100vh - 52px); /* ✅ Adjust height to account for navbar */
+    display: flex;
+    flex-direction: column;
   }
 
   .messenger-chat.show-on-mobile {
     transform: translateX(0);
+  }
+
+  /* ✅ CRITICAL FIX: Ensure chat header stays at top */
+  .chat-header {
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  /* ✅ CRITICAL FIX: Messages area takes remaining space */
+  .messages-area {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+  }
+
+  /* ✅ CRITICAL FIX: Smart suggestions fixed positioning */
+  .smart-suggestions {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: white;
+    border-top: 1px solid #e4e6eb;
+  }
+
+  /* ✅ CRITICAL FIX: Replying banner fixed positioning */
+  .replying-to {
+    flex-shrink: 0;
+    background: white;
+  }
+
+  /* ✅ CRITICAL FIX: File previews fixed positioning */
+  .file-previews {
+    flex-shrink: 0;
+    background: white;
+  }
+
+  /* ✅ CRITICAL FIX: Input area always visible at bottom */
+  .chat-input-area {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e4e6eb;
+    padding: 8px 12px;
+    z-index: 10;
+    min-height: 60px;
+    max-height: 120px;
+  }
+
+  /* ✅ iOS Safari specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    .messenger-chat {
+      height: -webkit-fill-available;
+      min-height: -webkit-fill-available;
+    }
+    
+    .messenger-container {
+      height: -webkit-fill-available;
+    }
   }
 
   /* Mobile Back Button */
@@ -2265,6 +2338,31 @@ iframe {
 
   .mobile-back-btn:hover {
     background: #e4e6eb;
+  }
+
+  /* ✅ Message input adjustments for mobile */
+  .message-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    max-height: 100px;
+    overflow-y: auto;
+  }
+
+  /* ✅ Input actions spacing */
+  .input-actions-left,
+  .input-actions-right {
+    flex-shrink: 0;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .send-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 
   /* Message Adjustments */
@@ -2297,53 +2395,63 @@ iframe {
   }
 
   .call-delete-btn {
-    opacity: 1; /* Always visible on mobile */
+    opacity: 1;
   }
 
-  /* Emoji Picker Mobile */
+  /* ✅ Emoji Picker Mobile - Better positioning */
   .emoji-picker {
-    right: 20px;
-    left: 20px;
+    position: fixed;
+    bottom: 70px;
+    left: 10px;
+    right: 10px;
     max-width: none;
+    max-height: 300px;
+    overflow-y: auto;
   }
 
   .emoji-grid {
     grid-template-columns: repeat(6, 1fr);
   }
 
-  /* Sticker Picker Mobile */
+  /* ✅ Sticker Picker Mobile - Better positioning */
   .sticker-picker {
-    right: 20px;
-    left: 20px;
+    position: fixed;
+    bottom: 70px;
+    left: 10px;
+    right: 10px;
     width: auto;
     max-width: none;
+    max-height: 300px;
   }
 
   .sticker-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  /* Smart Suggestions Mobile */
-  .smart-suggestions {
-    padding: 8px 16px;
+  /* ✅ Media options better positioning */
+  .media-options {
+    position: fixed;
+    bottom: 70px;
+    left: 10px;
   }
 
+  /* Smart Suggestions Mobile */
   .suggestion-chip {
     font-size: 13px;
     padding: 6px 12px;
   }
 
-  /* Info & Settings Panels Full Screen on Mobile */
+  /* ✅ Info & Settings Panels Full Screen on Mobile */
   .info-panel,
   .settings-panel {
     position: fixed;
-    top: 52px; /* ✅ FIXED: Add navbar height offset */
+    top: 52px;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     min-width: 100%;
-    height: calc(100vh - 52px); /* ✅ Adjust height to account for navbar */
+    height: calc(100vh - 52px);
     z-index: 300;
   }
 
@@ -2368,6 +2476,20 @@ iframe {
   .message-checkbox input[type="checkbox"] {
     width: 18px;
     height: 18px;
+  }
+
+  /* ✅ Prevent body scroll when messenger is open */
+  body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+  }
+
+  /* ✅ Voice message adjustments */
+  .voice-message {
+    min-width: 200px;
+    max-width: 280px;
+    padding: 8px 12px;
   }
 }
 
@@ -2578,4 +2700,33 @@ button:focus-visible {
   font-size: 14px;
   color: #65676b;
   margin: 0;
+}
+
+/* ============================================ */
+/* 20. MOBILE BROWSER FIXES */
+/* ============================================ */
+
+/* Prevent zoom on input focus - iOS Safari */
+input[type="text"],
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+  .messenger-container {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Smooth scrolling for messages */
+.messages-area {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
