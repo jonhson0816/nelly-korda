@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from '../config/api';
+import { API_URL } from '../../config/api';
 import './MediaViewer.css';
 
 // Pass token as prop or use React context
