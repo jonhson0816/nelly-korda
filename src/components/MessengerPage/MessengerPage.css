@@ -2208,21 +2208,13 @@ iframe {
 /* ============================================ */
 
 @media (max-width: 768px) {
-  /* ✅ FIX: Container must be fixed with proper height */
   .messenger-container {
-    position: fixed;
-    top: 52px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: calc(100vh - 52px);
-    margin-top: 0;
-    overflow: hidden;
+    margin-top: 52px;
   }
 
   /* ✅ New Chat Modal on Mobile */
   .new-chat-modal {
-    top: 0;
+    top: 0; /* Starts from sidebar top, which already has margin */
   }
 
   /* Sidebar Full Width on Mobile */
@@ -2237,130 +2229,21 @@ iframe {
     position: absolute;
   }
 
-  /* ✅ CRITICAL FIX: Chat Area with proper layout */
+  /* Chat Area Full Screen on Mobile */
   .messenger-chat {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 52px; /* ✅ FIXED: Add navbar height offset */
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
-    height: 100%;
     z-index: 200;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    height: calc(100vh - 52px); /* ✅ Adjust height to account for navbar */
   }
 
   .messenger-chat.show-on-mobile {
     transform: translateX(0);
-  }
-
-  /* ✅ Chat header stays at top */
-  .chat-header {
-    flex-shrink: 0;
-    height: 60px;
-    min-height: 60px;
-  }
-
-  /* ✅ Messages area scrollable middle section */
-  .messages-area {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 20px;
-  }
-
-  /* ✅ CRITICAL: Smart suggestions visible */
-  .smart-suggestions {
-    flex-shrink: 0;
-    padding: 8px 16px;
-    max-height: 60px;
-    overflow-x: auto;
-    background: white;
-  }
-
-  .suggestion-chip {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  /* ✅ CRITICAL: Replying banner visible */
-  .replying-to {
-    flex-shrink: 0;
-    background: white;
-  }
-
-  /* ✅ CRITICAL: File previews visible */
-  .file-previews {
-    flex-shrink: 0;
-    background: white;
-  }
-
-  /* ✅✅✅ MOST IMPORTANT: Input area ALWAYS VISIBLE */
-  .chat-input-area {
-    flex-shrink: 0;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: white;
-    border-top: 1px solid #e4e6eb;
-    padding: 10px 16px;
-    z-index: 100;
-    min-height: 56px;
-    display: flex !important;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* ✅ Make sure input is visible and usable */
-  .message-input {
-    flex: 1;
-    font-size: 16px; /* Prevents iOS zoom */
-    padding: 10px 14px;
-    height: auto;
-    min-height: 36px;
-    max-height: 100px;
-  }
-
-  /* ✅ Icon buttons visible */
-  .icon-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
-  .send-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  /* ✅ Input actions groups */
-  .input-actions-left,
-  .input-actions-right {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-  }
-
-  /* ✅ iOS Safari specific height fix */
-  @supports (-webkit-touch-callout: none) {
-    .messenger-container {
-      height: calc(100vh - 52px);
-      min-height: -webkit-fill-available;
-    }
-    
-    .messenger-chat {
-      height: 100%;
-    }
   }
 
   /* Mobile Back Button */
@@ -2377,6 +2260,7 @@ iframe {
     font-size: 20px;
     margin-right: 8px;
     color: #050505;
+    transition: background 0.2s;
   }
 
   .mobile-back-btn:hover {
@@ -2413,59 +2297,53 @@ iframe {
   }
 
   .call-delete-btn {
-    opacity: 1;
+    opacity: 1; /* Always visible on mobile */
   }
 
-  /* ✅ Emoji Picker positioned above input */
+  /* Emoji Picker Mobile */
   .emoji-picker {
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    max-width: 90vw;
-    max-height: 250px;
-    overflow-y: auto;
+    right: 20px;
+    left: 20px;
+    max-width: none;
   }
 
   .emoji-grid {
     grid-template-columns: repeat(6, 1fr);
   }
 
-  /* ✅ Sticker Picker positioned above input */
+  /* Sticker Picker Mobile */
   .sticker-picker {
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    width: 90vw;
-    max-width: 320px;
-    max-height: 300px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    max-width: none;
   }
 
   .sticker-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  /* ✅ Media options positioned above input */
-  .media-options {
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
+  /* Smart Suggestions Mobile */
+  .smart-suggestions {
+    padding: 8px 16px;
   }
 
-  /* Info & Settings Panels */
+  .suggestion-chip {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  /* Info & Settings Panels Full Screen on Mobile */
   .info-panel,
   .settings-panel {
     position: fixed;
-    top: 52px;
+    top: 52px; /* ✅ FIXED: Add navbar height offset */
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     min-width: 100%;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 52px); /* ✅ Adjust height to account for navbar */
     z-index: 300;
   }
 
@@ -2477,7 +2355,7 @@ iframe {
     justify-content: center;
   }
 
-  /* Multi-Select Mode */
+  /* Multi-Select Mode Mobile */
   .select-mode-header {
     gap: 10px;
     padding: 0 5px;
@@ -2490,13 +2368,6 @@ iframe {
   .message-checkbox input[type="checkbox"] {
     width: 18px;
     height: 18px;
-  }
-
-  /* Voice message */
-  .voice-message {
-    min-width: 200px;
-    max-width: 280px;
-    padding: 8px 12px;
   }
 }
 
