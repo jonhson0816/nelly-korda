@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './EventsPage.css';
 
@@ -13,7 +14,6 @@ const EventsPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  const API_URL = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -344,7 +344,6 @@ const CreateEventModal = ({ onClose, onSuccess }) => {
   const [coverPhoto, setCoverPhoto] = useState(null);
   const [uploading, setUploading] = useState(false);
 
-  const API_URL = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
 
   const handleSubmit = async (e) => {

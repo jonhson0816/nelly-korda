@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { API_URL } from '../config/api';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token') || null);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+ 
 
   // Configure axios defaults
   useEffect(() => {

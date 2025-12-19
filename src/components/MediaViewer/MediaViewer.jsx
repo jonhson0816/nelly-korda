@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../config/api';
 import './MediaViewer.css';
 
-const MediaViewer = ({ post, initialMediaIndex = 0, isOpen, onClose, currentUser }) => {
+// Pass token as prop or use React context
+const MediaViewer = ({ post, initialMediaIndex = 0, isOpen, onClose, currentUser, token }) => {
   const [currentIndex, setCurrentIndex] = useState(initialMediaIndex);
   const [showReactionPicker, setShowReactionPicker] = useState(false);
   const [comments, setComments] = useState([]);
@@ -11,8 +13,6 @@ const MediaViewer = ({ post, initialMediaIndex = 0, isOpen, onClose, currentUser
   const [showReactions, setShowReactions] = useState(false);
   const [mediaReactions, setMediaReactions] = useState({});
 
-  const API_URL = 'http://localhost:5000/api';
-  const token = localStorage.getItem('token');
 
   const reactionEmojis = {
     like: '👍',

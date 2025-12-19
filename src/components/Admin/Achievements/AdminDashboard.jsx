@@ -331,7 +331,7 @@ const AdminDashboard = () => {
               <h3>System Information</h3>
               <div className="ach-5001-info-box">
                 <p>
-                  <strong>Backend API:</strong> {process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}
+                  <strong>Backend API:</strong> {process.env.REACT_APP_API_URL || 'https://nelly-api.onrender.com/api'}
                 </p>
                 <p>
                   <strong>Environment:</strong> {process.env.NODE_ENV || 'development'}

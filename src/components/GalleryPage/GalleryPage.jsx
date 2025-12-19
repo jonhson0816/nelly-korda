@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 import './GalleryPage.css';
 
-const GalleryPage = () => {
+const GalleryPage = ({ token }) => {
   const navigate = useNavigate();
   const { userId } = useParams();
   const [media, setMedia] = useState([]);
   const [filteredMedia, setFilteredMedia] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'photos', 'videos', 'albums'
+  const [activeTab, setActiveTab] = useState('all');
   const [albums, setAlbums] = useState([]);
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [user, setUser] = useState(null);
 
-  const API_URL = 'http://localhost:5000/api';
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!token) {

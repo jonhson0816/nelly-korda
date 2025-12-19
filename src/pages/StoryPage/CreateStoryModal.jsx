@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './CreateStoryModal.css';
 
@@ -29,7 +30,6 @@ const CreateStoryModal = ({ isOpen, onClose, currentUser }) => {
   const [stickers, setStickers] = useState([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const API_URL = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
 
   // Popular emojis

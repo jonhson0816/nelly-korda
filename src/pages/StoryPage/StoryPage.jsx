@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './StoryPage.css';
 
@@ -21,7 +22,7 @@ const StoryPage = () => {
   
   const progressIntervalRef = useRef(null);
   const storyDuration = 5000; // 5 seconds per media item
-  const API_URL = 'http://localhost:5000/api';
+  
   const token = localStorage.getItem('token');
 
   useEffect(() => {

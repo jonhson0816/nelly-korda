@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './NotificationPage.css';
 
@@ -10,7 +11,7 @@ const NotificationPage = () => {
   const [filter, setFilter] = useState('all'); // 'all' or 'unread'
   const navigate = useNavigate();
 
-  const API_URL = 'http://localhost:5000/api';
+  
   const token = localStorage.getItem('token');
 
   useEffect(() => {

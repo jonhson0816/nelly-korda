@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
-// Use the same API_URL pattern as your ProfilePage.js
-const API_URL = 'http://localhost:5000/api';
+
 
 // Create axios instance with default config
 const api = axios.create({

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import AudioCall from '../../components/AudioCall/AudioCall';
 import VoiceRecorder from '../../components/VoiceRecorder/VoiceRecorder';
+import { useAuth } from '../../context/AuthContext';
+import { API_URL, SOCKET_URL } from '../../config/api';
 import { io } from 'socket.io-client';
 import './MessengerPage.css';
 
@@ -108,7 +110,9 @@ const getAudioUrl = (mediaUrl) => {
   return mediaUrl;
 };
 
+
 const MessengerPage = () => {
+  const { token } = useAuth();
   const [conversations, setConversations] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -159,9 +163,6 @@ const MessengerPage = () => {
   const lastMessageFetch = useRef(0);
   const lastUsersListFetch = useRef(0);
   const socketRef = useRef(null);
-
-  const API_URL = 'http://localhost:5000/api';
-  const token = localStorage.getItem('token');
 
   const popularEmojis = ['😊', '❤️', '😂', '👍', '🎉', '😍', '🔥', '👏', '😘', '🥰', '😢', '😎', '🎾', '⛳', '🏆', '💪', '🙏', '👑', '✨', '💯'];
 
@@ -350,20 +351,19 @@ const MessengerPage = () => {
 
   // Socket.IO connection for audio calls
 useEffect(() => {
-  if (!currentUser) return;
+    if (!currentUser) return;
 
-  console.log('🔌 Initializing Socket.IO for user:', currentUser._id);
+    console.log('🔌 Connecting to:', SOCKET_URL);
 
-  // Connect to Socket.IO
-  const socket = io('http://localhost:5000', {
-    query: { userId: currentUser._id },
-    transports: ['websocket', 'polling'],
-    reconnection: true,
-    reconnectionDelay: 1000,
-    reconnectionAttempts: 5
-  });
+    const socket = io(SOCKET_URL, {
+      query: { userId: currentUser._id },
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 5
+    });
 
-  socketRef.current = socket;
+    socketRef.current = socket;
 
   // ============================================
   // CONNECTION HANDLERS

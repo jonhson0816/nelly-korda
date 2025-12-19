@@ -1,11 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
-const API_URL = 'http://localhost:5000/api/points';
+const POINTS_URL = `${API_URL}/points`;
 
 // Get auth token
-const getToken = () => {
-  return localStorage.getItem('token');
-};
+const getToken = () => localStorage.getItem('token');
 
 // Get API headers
 const getHeaders = () => {
@@ -17,10 +16,9 @@ const getHeaders = () => {
 // USER STATS
 // ============================================
 
-// Get current user's stats
 export const getMyStats = async () => {
   try {
-    const response = await axios.get(`${API_URL}/stats`, {
+    const response = await axios.get(`${POINTS_URL}/stats`, {
       headers: getHeaders()
     });
     return response.data;
@@ -30,10 +28,9 @@ export const getMyStats = async () => {
   }
 };
 
-// Get user stats by ID
 export const getUserStats = async (userId) => {
   try {
-    const response = await axios.get(`${API_URL}/stats/${userId}`, {
+    const response = await axios.get(`${POINTS_URL}/stats/${userId}`, {
       headers: getHeaders()
     });
     return response.data;
@@ -47,10 +44,9 @@ export const getUserStats = async (userId) => {
 // BADGES
 // ============================================
 
-// Get all available badges
 export const getAllBadges = async () => {
   try {
-    const response = await axios.get(`${API_URL}/badges`, {
+    const response = await axios.get(`${POINTS_URL}/badges`, {
       headers: getHeaders()
     });
     return response.data;
@@ -60,10 +56,9 @@ export const getAllBadges = async () => {
   }
 };
 
-// Get current user's badges
 export const getMyBadges = async () => {
   try {
-    const response = await axios.get(`${API_URL}/my-badges`, {
+    const response = await axios.get(`${POINTS_URL}/my-badges`, {
       headers: getHeaders()
     });
     return response.data;
@@ -73,10 +68,9 @@ export const getMyBadges = async () => {
   }
 };
 
-// Check and award badges
 export const checkBadges = async () => {
   try {
-    const response = await axios.post(`${API_URL}/check-badges`, {}, {
+    const response = await axios.post(`${POINTS_URL}/check-badges`, {}, {
       headers: getHeaders()
     });
     return response.data;
@@ -90,10 +84,9 @@ export const checkBadges = async () => {
 // LEADERBOARD
 // ============================================
 
-// Get leaderboard
 export const getLeaderboard = async (type = 'points', limit = 10) => {
   try {
-    const response = await axios.get(`${API_URL}/leaderboard`, {
+    const response = await axios.get(`${POINTS_URL}/leaderboard`, {
       params: { type, limit },
       headers: getHeaders()
     });
@@ -108,10 +101,9 @@ export const getLeaderboard = async (type = 'points', limit = 10) => {
 // CONFIGURATION
 // ============================================
 
-// Get points configuration
 export const getPointsConfig = async () => {
   try {
-    const response = await axios.get(`${API_URL}/config`);
+    const response = await axios.get(`${POINTS_URL}/config`);
     return response.data;
   } catch (error) {
     console.error('Error fetching points config:', error);
@@ -123,10 +115,9 @@ export const getPointsConfig = async () => {
 // ADMIN FUNCTIONS
 // ============================================
 
-// Award points to user (Admin only)
 export const awardPoints = async (userId, pointsType, metadata = {}) => {
   try {
-    const response = await axios.post(`${API_URL}/award`, {
+    const response = await axios.post(`${POINTS_URL}/award`, {
       userId,
       pointsType,
       metadata
@@ -140,10 +131,9 @@ export const awardPoints = async (userId, pointsType, metadata = {}) => {
   }
 };
 
-// Award badge to user (Admin only)
 export const awardBadge = async (userId, badgeId) => {
   try {
-    const response = await axios.post(`${API_URL}/award-badge`, {
+    const response = await axios.post(`${POINTS_URL}/award-badge`, {
       userId,
       badgeId
     }, {

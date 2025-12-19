@@ -6,7 +6,7 @@ const AudioCall = ({
   onClose, 
   user, 
   currentUser,
-  callType, // 'incoming' or 'outgoing'
+  callType,
   onAccept,
   onDecline,
   callId,
@@ -28,7 +28,7 @@ const AudioCall = ({
   const callStartTimeRef = useRef(null);
   const missedCallTimeoutRef = useRef(null);
   const iceCandidatesQueueRef = useRef([]);
-  const isInitiatorRef = useRef(false); // Track who initiated the call
+  const isInitiatorRef = useRef(false);
   
   // Store user info in ref to avoid null issues
   const userRef = useRef(user);
@@ -84,7 +84,7 @@ const AudioCall = ({
       // ✅ CRITICAL: Attach to audio element immediately
       if (localAudioRef.current) {
         localAudioRef.current.srcObject = stream;
-        localAudioRef.current.volume = 0; // Mute local playback
+        localAudioRef.current.volume = 0;
       }
       
       console.log('✅ Microphone access granted');
@@ -127,7 +127,7 @@ const AudioCall = ({
           
           if (remoteAudioRef.current) {
             remoteAudioRef.current.srcObject = remoteStream;
-            remoteAudioRef.current.volume = 1.0; // Full volume for remote audio
+            remoteAudioRef.current.volume = 1.0;
             
             // ✅ Force play
             remoteAudioRef.current.play().then(() => {

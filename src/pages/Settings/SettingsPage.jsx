@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './SettingsPage.css';
 
@@ -12,7 +13,7 @@ const SettingsPage = () => {
   const [blockedUsers, setBlockedUsers] = useState([]);
   const [activeSessions, setActiveSessions] = useState([]);
 
-  const API_URL = 'http://localhost:5000/api';
+  
   const token = localStorage.getItem('token');
 
   useEffect(() => {

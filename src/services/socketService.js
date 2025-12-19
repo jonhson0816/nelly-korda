@@ -1,4 +1,5 @@
 import { io } from 'socket.io-client';
+import { SOCKET_URL } from '../config/api';
 
 class SocketService {
   constructor() {
@@ -12,7 +13,6 @@ class SocketService {
       return this.socket;
     }
 
-    const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
 
     this.socket = io(SOCKET_URL, {
       auth: {

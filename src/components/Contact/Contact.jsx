@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../config/api';
+import { useAuth } from '../../context/AuthContext';
 import './Contact.css';
 
 const Contact = () => {
+  const { token } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,9 +17,6 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
-
-  const API_URL = 'http://localhost:5000/api';
-  const token = localStorage.getItem('token');
 
   // Fetch current user on mount
   useEffect(() => {

@@ -1,6 +1,8 @@
+// src/api/trending.js
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
-const API_URL = 'http://localhost:5000/api/trending';
+const TRENDING_API_URL = `${API_URL}/trending`;
 
 // Get authentication token
 const getAuthToken = () => {
@@ -15,7 +17,7 @@ export const getTrending = async (limit = 10, period = 'weekly') => {
       headers: { Authorization: `Bearer ${token}` }
     } : {};
 
-    const response = await axios.get(`${API_URL}?limit=${limit}&period=${period}`, config);
+    const response = await axios.get(`${TRENDING_API_URL}?limit=${limit}&period=${period}`, config);
     return response.data;
   } catch (error) {
     console.error('Error fetching trending:', error);
@@ -31,11 +33,10 @@ export const searchByHashtag = async (hashtag, page = 1, limit = 20) => {
       headers: { Authorization: `Bearer ${token}` }
     } : {};
 
-    // Remove # if present
     const normalizedHashtag = hashtag.replace(/^#/, '');
 
     const response = await axios.get(
-      `${API_URL}/search/${normalizedHashtag}?page=${page}&limit=${limit}`,
+      `${TRENDING_API_URL}/search/${normalizedHashtag}?page=${page}&limit=${limit}`,
       config
     );
     return response.data;
@@ -55,7 +56,7 @@ export const getHashtagDetails = async (hashtag) => {
 
     const normalizedHashtag = hashtag.replace(/^#/, '');
 
-    const response = await axios.get(`${API_URL}/${normalizedHashtag}`, config);
+    const response = await axios.get(`${TRENDING_API_URL}/${normalizedHashtag}`, config);
     return response.data;
   } catch (error) {
     console.error('Error fetching hashtag details:', error);
@@ -68,7 +69,7 @@ export const updateTrendingData = async (period = 'weekly') => {
   try {
     const token = getAuthToken();
     const response = await axios.post(
-      `${API_URL}/update`,
+      `${TRENDING_API_URL}/update`,
       { period },
       {
         headers: { Authorization: `Bearer ${token}` }
@@ -85,7 +86,7 @@ export const updateTrendingData = async (period = 'weekly') => {
 export const getTrendingStats = async () => {
   try {
     const token = getAuthToken();
-    const response = await axios.get(`${API_URL}/admin/stats`, {
+    const response = await axios.get(`${TRENDING_API_URL}/admin/stats`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;
@@ -101,7 +102,7 @@ export const deleteTrendingHashtag = async (hashtag) => {
     const token = getAuthToken();
     const normalizedHashtag = hashtag.replace(/^#/, '');
     
-    const response = await axios.delete(`${API_URL}/${normalizedHashtag}`, {
+    const response = await axios.delete(`${TRENDING_API_URL}/${normalizedHashtag}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;
@@ -115,7 +116,7 @@ export const deleteTrendingHashtag = async (hashtag) => {
 export const cleanupTrendingData = async () => {
   try {
     const token = getAuthToken();
-    const response = await axios.post(`${API_URL}/cleanup`, {}, {
+    const response = await axios.post(`${TRENDING_API_URL}/cleanup`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;

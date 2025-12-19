@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import MediaViewer from '../../components/MediaViewer/MediaViewer';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './PostPage.css';
 
@@ -29,7 +30,6 @@ const PostPage = () => {
   const [editingComment, setEditingComment] = useState(null);
   const [editCommentContent, setEditCommentContent] = useState('');
   
-  const API_URL = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
 
   useEffect(() => {

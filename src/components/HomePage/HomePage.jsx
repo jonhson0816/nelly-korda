@@ -8,11 +8,14 @@ import tournamentService from '../../services/tournamentService';
 import { getTrending } from '../../services/trendingService';
 import PointsBadgeDisplay from '../../components/PointsBadgeDisplay/PointsBadgeDisplay';
 import PlatformStatsWidget from '../PlatformStatsWidget/PlatformStatsWidget';
+import { API_URL } from '../../config/api';
+import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import './HomePage.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { token } = useAuth();
   const [posts, setPosts] = useState([]);
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,8 +39,6 @@ const HomePage = () => {
   const [trendingLoading, setTrendingLoading] = useState(true);
   const [trendingError, setTrendingError] = useState(null);
 
-  const API_URL = 'http://localhost:5000/api';
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!token) {
@@ -54,7 +55,7 @@ const HomePage = () => {
     try {
       setTrendingLoading(true);
       setTrendingError(null);
-      const response = await getTrending(5, 'weekly'); // Get top 5 weekly trending
+      const response = await getTrending(5, 'weekly');
       setTrending(response.trending || []);
     } catch (error) {
       console.error('Error fetching trending:', error);

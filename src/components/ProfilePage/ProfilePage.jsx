@@ -4,6 +4,7 @@ import StoryRing from '../../components/StoryRing/StoryRing';
 import { getAchievements } from '../../services/achievementService';
 import tournamentService from '../../services/tournamentService';
 import PointsBadgeDisplay from '../../components/PointsBadgeDisplay/PointsBadgeDisplay';
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 import './ProfilePage.css';
 
@@ -49,7 +50,6 @@ const ProfilePage = () => {
     allowMessages: true
   });
 
-  const API_URL = 'http://localhost:5000/api';
   const token = localStorage.getItem('token');
 
   // Working fallback images
