@@ -1196,33 +1196,50 @@ const handleDeleteMessage = async (messageId, deleteForEveryone = false) => {
   }, []);
 
   const startNewConversation = (user) => {
-    console.log('💬 Starting conversation with:', user.firstName, user.lastName);
-    
-    if (!currentUser.isAdmin && !user.isAdmin) {
-      alert('You can only message admins. Normal users cannot message each other.');
-      return;
+  console.log('💬 Starting conversation with:', user.firstName, user.lastName);
+  
+  if (!currentUser.isAdmin && !user.isAdmin) {
+    alert('You can only message admins. Normal users cannot message each other.');
+    return;
+  }
+  
+  setActiveConversation({
+    id: `new-${user._id}`,
+    user: {
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      name: `${user.firstName} ${user.lastName}`,
+      avatar: user.avatar?.url || user.avatar,
+      username: user.username,
+      isAdmin: user.isAdmin,
+      isOnline: false
+    },
+    lastMessage: null,
+    unreadCount: 0
+  });
+  
+  setMessages([]);
+  setShowNewChat(false);
+  setSearchQuery('');
+  
+  // ✅ FIX: Navigate to chat on mobile/tablet
+  setShowChatOnMobile(true);
+  
+  // ✅ FIX: Ensure input area is visible
+  setTimeout(() => {
+    const inputArea = document.querySelector('.chat-input-area');
+    const messageInput = document.querySelector('.message-input');
+    if (inputArea) {
+      inputArea.style.display = 'flex';
+      inputArea.style.visibility = 'visible';
+      inputArea.style.opacity = '1';
     }
-    
-    setActiveConversation({
-      id: `new-${user._id}`,
-      user: {
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        name: `${user.firstName} ${user.lastName}`,
-        avatar: user.avatar?.url || user.avatar,
-        username: user.username,
-        isAdmin: user.isAdmin,
-        isOnline: false
-      },
-      lastMessage: null,
-      unreadCount: 0
-    });
-    
-    setMessages([]);
-    setShowNewChat(false);
-    setSearchQuery('');
-  };
+    if (messageInput) {
+      messageInput.focus();
+    }
+  }, 100);
+};
 
   const formatTime = (date) => {
     if (!date) return '';

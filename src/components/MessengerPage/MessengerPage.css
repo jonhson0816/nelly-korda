@@ -29,7 +29,7 @@
    MAIN CONTAINER - CRITICAL FIX
    ============================================ */
 .messenger-container {
-  margin: 3rem auto;
+  /* margin: 3rem auto; */
   display: flex;
   height: calc(100vh - var(--navbar-height)); /* ✅ FIXED: Account for navbar */
   height: calc(100dvh - var(--navbar-height));
