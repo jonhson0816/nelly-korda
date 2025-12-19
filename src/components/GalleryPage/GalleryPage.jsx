@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../config/api';
+import { useAuth } from '../../context/AuthContext';
 import './GalleryPage.css';
 
-const GalleryPage = ({ token }) => {
+const GalleryPage = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
+  const { token } = useAuth(); // ✅ FIXED: Now using useAuth hook
   const [media, setMedia] = useState([]);
   const [filteredMedia, setFilteredMedia] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +26,7 @@ const GalleryPage = ({ token }) => {
       return;
     }
     fetchGalleryData();
-  }, [userId]);
+  }, [userId, token]);
 
   useEffect(() => {
     filterMedia();
@@ -139,9 +141,9 @@ const GalleryPage = ({ token }) => {
           <div className="gallery-header-left">
             <button 
               className="back-btn"
-              onClick={() => navigate(userId ? `/profile/${user?.username}` : '/profile')}
+              onClick={() => navigate(userId ? `/profile/${user?.username}` : '/')}
             >
-              ← Back to Profile
+              ← Back
             </button>
             <div className="gallery-title">
               <h1>Photos & Videos</h1>

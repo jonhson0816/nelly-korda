@@ -8,6 +8,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Helvetica Neue', sans-serif;
   background-color: #f3f2ef;
   color: #000000e6;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ========================================
@@ -18,6 +20,9 @@ body {
   padding: 0 45px;
   background-color: #f3f2ef;
   padding-top: 40px;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .hom-0330-homepage-main {
@@ -30,6 +35,7 @@ body {
   position: relative;
   height: calc(100vh - 60px);
   overflow: hidden;
+  width: 100%;
 }
 
 /* ========================================
@@ -132,6 +138,8 @@ body {
   border-radius: 8px;
   margin-bottom: 8px;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* ========================================
@@ -237,6 +245,7 @@ body {
   margin-right: 12px;
   width: 24px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .hom-0330-nav-text {
@@ -269,6 +278,7 @@ body {
 .hom-0330-link-icon {
   margin-right: 8px;
   font-size: 16px;
+  flex-shrink: 0;
 }
 
 /* ========================================
@@ -285,6 +295,7 @@ body {
   padding: 0 12px;
   overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .hom-0330-stories-container::-webkit-scrollbar {
@@ -364,6 +375,7 @@ body {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .hom-0330-create-post-input {
@@ -375,6 +387,8 @@ body {
   color: #00000099;
   cursor: pointer;
   transition: background-color 0.15s;
+  min-width: 0;
+  width: 100%;
 }
 
 .hom-0330-create-post-input:hover {
@@ -383,10 +397,11 @@ body {
 
 .hom-0330-create-post-actions {
   display: flex;
-  justify-content: space-around;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 4px;
   padding-top: 8px;
   border-top: 1px solid #00000014;
+  width: 100%;
 }
 
 .hom-0330-action-btn {
@@ -395,7 +410,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 8px;
+  padding: 10px 4px;
   background: transparent;
   border: none;
   border-radius: 4px;
@@ -404,6 +419,10 @@ body {
   color: #00000099;
   cursor: pointer;
   transition: background-color 0.15s;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hom-0330-action-btn:hover {
@@ -416,6 +435,7 @@ body {
 
 .hom-0330-icon {
   font-size: 18px;
+  flex-shrink: 0;
 }
 
 /* ========================================
@@ -424,6 +444,9 @@ body {
 .hom-0330-post-card {
   margin-bottom: 8px;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hom-0330-post-header {
@@ -431,6 +454,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   padding: 12px 16px;
+  width: 100%;
 }
 
 .hom-0330-post-author {
@@ -438,10 +462,13 @@ body {
   align-items: center;
   gap: 12px;
   flex: 1;
+  min-width: 0;
 }
 
 .hom-0330-author-info {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .hom-0330-author-name {
@@ -452,6 +479,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .hom-0330-author-name:hover {
@@ -461,17 +492,23 @@ body {
 .hom-0330-verified-badge {
   color: #0a66c2;
   font-size: 12px;
+  flex-shrink: 0;
 }
 
 .hom-0330-post-time {
   font-size: 12px;
   color: #00000099;
   margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Post Menu */
 .hom-0330-post-menu-wrapper {
   position: relative;
+  flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .hom-0330-post-menu-btn {
@@ -487,6 +524,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .hom-0330-post-menu-btn:hover {
@@ -531,11 +569,14 @@ body {
 
 .hom-0330-menu-icon {
   font-size: 16px;
+  flex-shrink: 0;
 }
 
 /* Post Content */
 .hom-0330-post-content {
   padding: 0 16px 12px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .hom-0330-post-caption {
@@ -543,17 +584,21 @@ body {
   line-height: 1.5;
   color: #000000e6;
   white-space: pre-wrap;
+  word-wrap: break-word;
   word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
-/* Post Media */
-/* Post Media */
+/* Post Media - CRITICAL FIX */
 .hom-0330-post-media {
   width: 100%;
+  max-width: 100%;
   display: grid;
   gap: 2px;
   background-color: #000000;
-  margin-bottom: 0; /* Ensures no extra margin */
+  margin: 0;
+  overflow: hidden;
 }
 
 .hom-0330-post-media.hom-0330-media-count-1 {
@@ -587,21 +632,23 @@ body {
   position: relative;
   overflow: hidden;
   background-color: #000000;
-  display: flex; /* ADD THIS */
-  align-items: center; /* ADD THIS */
-  justify-content: center; /* ADD THIS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hom-0330-media-item img,
 .hom-0330-media-item video {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   display: block;
-  /* vertical-align: bottom; */
 }
 
-/* Post Stats - VERIFY this section exists and has border-top */
+/* Post Stats */
 .hom-0330-post-stats {
   display: flex;
   justify-content: space-between;
@@ -613,6 +660,9 @@ body {
   background-color: #ffffff;
   position: relative;
   z-index: 1;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
 }
 
 .hom-0330-post-stats-left,
@@ -620,6 +670,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .hom-0330-stat-likes {
@@ -635,6 +686,7 @@ body {
 .hom-0330-stat-link {
   cursor: pointer;
   transition: color 0.15s;
+  white-space: nowrap;
 }
 
 .hom-0330-stat-link:hover {
@@ -642,7 +694,7 @@ body {
   text-decoration: underline;
 }
 
-/* Post Actions - VERIFY this section exists */
+/* Post Actions */
 .hom-0330-post-actions {
   display: flex;
   justify-content: space-around;
@@ -651,6 +703,8 @@ body {
   background-color: #ffffff;
   position: relative;
   z-index: 1;
+  width: 100%;
+  gap: 4px;
 }
 
 /* ========================================
@@ -707,6 +761,9 @@ body {
   font-size: 12px;
   color: #00000099;
   margin: 2px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Trending Items */
@@ -731,6 +788,9 @@ body {
   font-weight: 600;
   color: #0a66c2;
   margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .hom-0330-trending-count {
@@ -769,6 +829,9 @@ body {
   font-weight: 600;
   color: #000000e6;
   margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .hom-0330-achievement-info p {
@@ -816,6 +879,7 @@ body {
 .hom-0330-stat-label {
   font-size: 12px;
   color: #00000099;
+  text-align: center;
 }
 
 /* ========================================
@@ -874,6 +938,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .hom-0330-close-btn:hover {
@@ -898,6 +963,7 @@ body {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .hom-0330-modal-user-info h4 {
@@ -1011,6 +1077,7 @@ body {
   color: #00000099;
   cursor: pointer;
   transition: background-color 0.15s;
+  white-space: nowrap;
 }
 
 .hom-0330-add-media-btn:hover {
@@ -1019,6 +1086,7 @@ body {
 
 .hom-0330-media-icon {
   font-size: 16px;
+  flex-shrink: 0;
 }
 
 .hom-0330-modal-footer {
@@ -1119,71 +1187,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-/* ========================================
-   Responsive Design
-======================================== */
-@media (max-width: 1200px) {
-  .hom-0330-homepage-main {
-    grid-template-columns: 200px 1fr 300px;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hom-0330-homepage-main {
-    grid-template-columns: 1fr;
-    padding: 16px;
-    height: auto;
-    overflow: visible;
-  }
-  
-  .hom-0330-left-sidebar,
-  .hom-0330-right-sidebar {
-    display: none;
-  }
-  
-  .hom-0330-middle-feed {
-    height: auto;
-    overflow: visible;
-  }
-}
-
-@media (max-width: 768px) {
-  .hom-0330-homepage-container {
-    padding-top: 48px;
-  }
-  
-  .hom-0330-homepage-main {
-    padding: 8px;
-  }
-  
-  .hom-0330-stories-container {
-    padding: 0 8px;
-  }
-  
-  .hom-0330-story-card {
-    flex: 0 0 100px;
-  }
-  
-  .hom-0330-story-avatar {
-    width: 56px;
-    height: 56px;
-  }
-  
-  .hom-0330-create-post-card,
-  .hom-0330-post-card {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-  }
-  
-  .hom-0330-modal-content {
-    max-width: 100%;
-    border-radius: 0;
-    max-height: 100vh;
-  }
+  width: 100%;
 }
 
 /* ========================================
@@ -1195,6 +1199,9 @@ body {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 8px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hom-0330-section-header {
@@ -1204,6 +1211,8 @@ body {
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid #00000014;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .hom-0330-section-header h2 {
@@ -1223,6 +1232,8 @@ body {
   padding: 6px 12px;
   border-radius: 4px;
   transition: background-color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hom-0330-view-all-btn:hover {
@@ -1242,6 +1253,8 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hom-0330-achievement-card:hover {
@@ -1331,6 +1344,8 @@ body {
   padding-top: 10px;
   border-top: 1px solid #00000014;
   font-size: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .hom-0330-achievement-year {
@@ -1345,23 +1360,6 @@ body {
   gap: 4px;
 }
 
-@media (max-width: 768px) {
-  .hom-0330-achievements-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  
-  .hom-0330-achievement-header {
-    height: 140px;
-  }
-  
-  .hom-0330-achievements-feed-section {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-  }
-}
-
 /* ========================================
    TOURNAMENTS FEED SECTION
 ======================================== */
@@ -1371,6 +1369,9 @@ body {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 8px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hom-0330-tournaments-grid {
@@ -1386,6 +1387,8 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hom-0330-tournament-card-feed:hover {
@@ -1485,40 +1488,25 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hom-0330-tournament-icon-feed {
   font-size: 14px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .hom-0330-tournaments-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  
-  .hom-0330-tournament-header-feed {
-    height: 140px;
-  }
-  
-  .hom-0330-tournaments-feed-section {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-  }
-}
-
-/* ============================================
-   ADD THESE STYLES TO YOUR HomePage.css
-   Location: Add at the bottom of your HomePage.css file
-   ============================================ */
-
-/* Section Header with View All Link */
+/* ========================================
+   RIGHT SIDEBAR SECTIONS
+======================================== */
 .hom-0330-section-header-sidebar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .hom-0330-view-all-link {
@@ -1531,133 +1519,15 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
   transition: background-color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hom-0330-view-all-link:hover {
   background-color: rgba(24, 119, 242, 0.1);
 }
 
-/* Empty Achievements State */
-.hom-0330-empty-achievements {
-  text-align: center;
-  padding: 30px 16px;
-  background-color: #f0f2f5;
-  border-radius: 8px;
-}
-
-.hom-0330-empty-icon {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 12px;
-  opacity: 0.5;
-}
-
-.hom-0330-empty-achievements p {
-  font-size: 14px;
-  color: #65676b;
-  margin: 0;
-}
-
-/* Achievement Item - Enhanced */
-.hom-0330-achievement-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin-bottom: 8px;
-}
-
-.hom-0330-achievement-item:hover {
-  background-color: #f0f2f5;
-}
-
-.hom-0330-achievement-item:last-child {
-  margin-bottom: 0;
-}
-
-.hom-0330-achievement-icon {
-  font-size: 32px;
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hom-0330-achievement-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.hom-0330-achievement-info h5 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #050505;
-  margin: 0 0 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hom-0330-achievement-info p {
-  font-size: 12px;
-  color: #65676b;
-  margin: 0 0 4px;
-  text-transform: capitalize;
-}
-
-/* Major Badge Small */
-.hom-0330-major-badge-small {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  color: #ffd700;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);
-  padding: 2px 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-/* Update existing stat card to support achievements count */
-.hom-0330-stat-card:nth-child(3) {
-  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  color: #000;
-}
-
-.hom-0330-stat-card:nth-child(3) .hom-0330-stat-icon {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .hom-0330-achievement-info h5 {
-    font-size: 13px;
-  }
-  
-  .hom-0330-achievement-info p {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hom-0330-section-header-sidebar {
-    flex-direction: row;
-    gap: 8px;
-  }
-  
-  .hom-0330-view-all-link {
-    font-size: 12px;
-  }
-}
-
-/* Empty Tournaments State */
+.hom-0330-empty-achievements,
 .hom-0330-empty-tournaments {
   text-align: center;
   padding: 30px 16px;
@@ -1665,61 +1535,18 @@ body {
   border-radius: 8px;
 }
 
-.hom-0330-empty-tournaments .hom-0330-empty-icon {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 12px;
-  opacity: 0.5;
-}
-
+.hom-0330-empty-achievements p,
 .hom-0330-empty-tournaments p {
   font-size: 14px;
   color: #65676b;
   margin: 0;
 }
 
-/* Tournament Card - Enhanced */
-.hom-0330-tournament-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 12px;
-  background-color: #ffffff;
-  border: 1px solid #e4e6eb;
-}
-
-.hom-0330-tournament-card:hover {
-  background-color: #f0f2f5;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-.hom-0330-tournament-card:last-child {
-  margin-bottom: 0;
-}
-
-/* Tournament Icon/Thumbnail Wrapper */
 .hom-0330-tournament-icon-wrapper {
   position: relative;
   flex-shrink: 0;
   width: 56px;
   height: 56px;
-}
-
-.hom-0330-tournament-icon {
-  font-size: 32px;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1877f2 0%, #0a66c2 100%);
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hom-0330-tournament-thumb {
@@ -1745,45 +1572,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Tournament Info */
-.hom-0330-tournament-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.hom-0330-tournament-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #050505;
-  margin: 0 0 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-  line-height: 1.3;
-}
-
-.hom-0330-tournament-date {
-  font-size: 12px;
-  color: #65676b;
-  margin: 0 0 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.hom-0330-tournament-location {
-  font-size: 12px;
-  color: #65676b;
-  margin: 0 0 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Tournament Meta */
 .hom-0330-tournament-meta {
   display: flex;
   align-items: center;
@@ -1801,6 +1589,7 @@ body {
   border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .hom-0330-tournament-status-upcoming {
@@ -1811,6 +1600,7 @@ body {
   background-color: rgba(0, 164, 0, 0.1);
   padding: 3px 8px;
   border-radius: 10px;
+  white-space: nowrap;
 }
 
 .hom-0330-tournament-status-live {
@@ -1822,6 +1612,7 @@ body {
   padding: 3px 8px;
   border-radius: 10px;
   animation: pulse-live 2s infinite;
+  white-space: nowrap;
 }
 
 @keyframes pulse-live {
@@ -1833,60 +1624,20 @@ body {
   }
 }
 
-/* Update Platform Stats - Third Card for Tournaments */
-.hom-0330-stat-card:nth-child(3) {
-  background: linear-gradient(135deg, #1877f2 0%, #0a66c2 100%);
-  color: #ffffff;
-}
-
-.hom-0330-stat-card:nth-child(3) .hom-0330-stat-icon {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .hom-0330-tournament-name {
-    font-size: 13px;
-  }
-  
-  .hom-0330-tournament-date,
-  .hom-0330-tournament-location {
-    font-size: 11px;
-  }
-
-  .hom-0330-tournament-icon-wrapper {
-    width: 48px;
-    height: 48px;
-  }
-
-  .hom-0330-tournament-icon,
-  .hom-0330-tournament-thumb {
-    width: 48px;
-    height: 48px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hom-0330-tournament-card {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .hom-0330-tournament-icon-wrapper {
-    width: 44px;
-    height: 44px;
-  }
-
-  .hom-0330-tournament-icon,
-  .hom-0330-tournament-thumb {
-    width: 44px;
-    height: 44px;
-    font-size: 28px;
-  }
+.hom-0330-major-badge-small {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 237, 78, 0.15) 100%);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  white-space: nowrap;
 }
 
 /* ========================================
-   TRENDING SECTION - Right Sidebar
+   TRENDING SECTION
 ======================================== */
 .hom-0330-trending-section {
   background: #ffffff;
@@ -1900,6 +1651,8 @@ body {
   align-items: center;
   padding: 12px 12px 8px;
   border-bottom: 1px solid #00000014;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .hom-0330-trending-title {
@@ -1929,6 +1682,8 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hom-0330-trending-refresh-btn:hover:not(:disabled) {
@@ -1941,7 +1696,6 @@ body {
   opacity: 0.6;
 }
 
-/* Loading State */
 .hom-0330-trending-loading {
   display: flex;
   flex-direction: column;
@@ -1966,7 +1720,6 @@ body {
   margin: 0;
 }
 
-/* Error State */
 .hom-0330-trending-error {
   display: flex;
   flex-direction: column;
@@ -2004,7 +1757,6 @@ body {
   background: #004182;
 }
 
-/* Empty State */
 .hom-0330-trending-empty {
   display: flex;
   flex-direction: column;
@@ -2034,29 +1786,6 @@ body {
   line-height: 1.4;
 }
 
-/* Trending List */
-.hom-0330-trending-list {
-  padding: 0;
-}
-
-.hom-0330-trending-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  border-bottom: 1px solid #00000008;
-}
-
-.hom-0330-trending-item:last-child {
-  border-bottom: none;
-}
-
-.hom-0330-trending-item:hover {
-  background-color: #00000008;
-}
-
 .hom-0330-trending-item-content {
   flex: 1;
   min-width: 0;
@@ -2065,25 +1794,9 @@ body {
   gap: 4px;
 }
 
-.hom-0330-trending-tag {
-  font-size: 14px;
-  font-weight: 600;
-  color: #0a66c2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hom-0330-trending-count {
-  font-size: 12px;
-  color: #00000099;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .hom-0330-trending-count-icon {
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .hom-0330-trending-badge {
@@ -2098,6 +1811,7 @@ body {
   color: #ffffff;
   flex-shrink: 0;
   box-shadow: 0 2px 4px rgba(255, 107, 0, 0.2);
+  white-space: nowrap;
 }
 
 .hom-0330-trending-badge-icon {
@@ -2114,7 +1828,6 @@ body {
   }
 }
 
-/* Trending Footer */
 .hom-0330-trending-footer {
   padding: 8px 12px;
   border-top: 1px solid #00000014;
@@ -2136,36 +1849,453 @@ body {
   background-color: rgba(10, 102, 194, 0.1);
 }
 
-/* Responsive adjustments */
+/* ========================================
+   RESPONSIVE DESIGN - CRITICAL FIXES
+======================================== */
+
 @media (max-width: 1200px) {
-  .hom-0330-trending-tag {
-    font-size: 13px;
-  }
-  
-  .hom-0330-trending-count {
-    font-size: 11px;
-  }
-  
-  .hom-0330-trending-badge {
-    font-size: 11px;
-    padding: 5px 8px;
+  .hom-0330-homepage-main {
+    grid-template-columns: 200px 1fr 300px;
+    gap: 16px;
   }
 }
 
+/* TABLET - 1024px and below */
+@media (max-width: 1024px) {
+  .hom-0330-homepage-container {
+    padding: 0 16px;
+    padding-top: 60px;
+  }
+  
+  .hom-0330-homepage-main {
+    grid-template-columns: 1fr;
+    padding: 16px 0;
+    height: auto;
+    overflow: visible;
+  }
+  
+  .hom-0330-left-sidebar,
+  .hom-0330-right-sidebar {
+    display: none;
+  }
+  
+  .hom-0330-middle-feed {
+    height: auto;
+    overflow: visible;
+  }
+
+  .hom-0330-achievements-grid,
+  .hom-0330-tournaments-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .hom-0330-achievement-header,
+  .hom-0330-tournament-header-feed {
+    height: 140px;
+  }
+}
+
+/* MOBILE - 768px and below - CRITICAL SECTION */
 @media (max-width: 768px) {
-  .hom-0330-trending-section {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+  }
+
+  .hom-0330-homepage-container {
+    padding: 0;
+    padding-top: 52px;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+  }
+  
+  .hom-0330-homepage-main {
+    padding: 0;
+    gap: 0;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .hom-0330-middle-feed {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Stories Section - Mobile */
+  .hom-0330-stories-section {
     border-radius: 0;
     border-left: none;
     border-right: none;
+    margin-bottom: 8px;
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .hom-0330-stories-container {
+    padding: 0 12px;
+    -webkit-overflow-scrolling: touch;
   }
   
-  .hom-0330-trending-item {
+  .hom-0330-story-card {
+    flex: 0 0 100px;
+  }
+  
+  .hom-0330-story-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hom-0330-story-name {
+    font-size: 11px;
+  }
+  
+  /* Create Post Card - Mobile - CRITICAL FIX */
+  .hom-0330-create-post-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 12px;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .hom-0330-create-post-header {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .hom-0330-user-avatar-small {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hom-0330-create-post-input {
+    padding: 10px 14px;
+    font-size: 13px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hom-0330-create-post-actions {
+    width: 100%;
+    gap: 2px;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hom-0330-action-btn {
+    flex: 1;
+    padding: 8px 2px;
+    font-size: 11px;
+    gap: 3px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .hom-0330-action-btn span:last-child {
+    display: none;
+  }
+
+  .hom-0330-icon {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  /* Post Card - Mobile - CRITICAL FIX */
+  .hom-0330-post-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 8px;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .hom-0330-post-header {
+    padding: 10px 12px;
+    width: 100%;
+  }
+
+  .hom-0330-post-author {
+    gap: 8px;
+  }
+
+  .hom-0330-author-name {
+    font-size: 13px;
+  }
+
+  .hom-0330-post-time {
+    font-size: 11px;
+  }
+
+  .hom-0330-post-content {
+    padding: 0 12px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hom-0330-post-caption {
+    font-size: 13px;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Post Media - Mobile - CRITICAL FIX */
+  .hom-0330-post-media {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hom-0330-post-media.hom-0330-media-count-1 {
+    max-height: 400px;
+  }
+
+  .hom-0330-post-media.hom-0330-media-count-2,
+  .hom-0330-post-media.hom-0330-media-count-3,
+  .hom-0330-post-media.hom-0330-media-count-4,
+  .hom-0330-post-media.hom-0330-media-count-5plus {
+    max-height: 300px;
+  }
+
+  .hom-0330-media-item img,
+  .hom-0330-media-item video {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hom-0330-post-stats {
+    padding: 8px 12px;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  .hom-0330-post-actions {
+    padding: 6px 12px;
+    width: 100%;
+    gap: 2px;
+  }
+
+  .hom-0330-post-actions .hom-0330-action-btn {
+    font-size: 12px;
+    padding: 8px 4px;
+    gap: 4px;
+  }
+  
+  /* Achievements Feed - Mobile */
+  .hom-0330-achievements-feed-section,
+  .hom-0330-tournaments-feed-section {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 12px;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .hom-0330-section-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .hom-0330-section-header h2 {
+    font-size: 15px;
+  }
+
+  .hom-0330-view-all-btn {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+
+  .hom-0330-achievements-grid,
+  .hom-0330-tournaments-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .hom-0330-achievement-header,
+  .hom-0330-tournament-header-feed {
+    height: 140px;
+  }
+
+  .hom-0330-achievement-content,
+  .hom-0330-tournament-content-feed {
     padding: 10px;
   }
+
+  .hom-0330-achievement-title,
+  .hom-0330-tournament-title-feed {
+    font-size: 13px;
+  }
+
+  .hom-0330-achievement-description,
+  .hom-0330-tournament-location-feed,
+  .hom-0330-tournament-dates-feed,
+  .hom-0330-tournament-prize-feed {
+    font-size: 12px;
+  }
   
-  .hom-0330-trending-empty,
-  .hom-0330-trending-error,
-  .hom-0330-trending-loading {
-    padding: 24px 16px;
+  /* Modal - Mobile */
+  .hom-0330-create-post-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .hom-0330-modal-content {
+    max-width: 100vw;
+    width: 100vw;
+    max-height: 95vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .hom-0330-modal-header {
+    padding: 12px 16px;
+  }
+
+  .hom-0330-modal-header h3 {
+    font-size: 18px;
+  }
+
+  .hom-0330-modal-body {
+    padding: 16px;
+  }
+
+  .hom-0330-modal-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hom-0330-post-textarea {
+    font-size: 13px;
+  }
+
+  .hom-0330-previews-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 6px;
+  }
+
+  .hom-0330-add-to-post-actions {
+    gap: 4px;
+  }
+
+  .hom-0330-add-media-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .hom-0330-modal-footer {
+    padding: 12px 16px;
+  }
+
+  .hom-0330-btn-post {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
+
+/* SMALL MOBILE - 480px and below */
+@media (max-width: 480px) {
+  .hom-0330-story-card {
+    flex: 0 0 80px;
+  }
+
+  .hom-0330-story-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hom-0330-story-name {
+    font-size: 10px;
+  }
+
+  .hom-0330-create-post-header {
+    gap: 6px;
+  }
+
+  .hom-0330-user-avatar-small {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hom-0330-create-post-actions {
+    gap: 2px;
+  }
+
+  .hom-0330-action-btn {
+    padding: 8px 1px;
+    font-size: 10px;
+  }
+
+  .hom-0330-icon {
+    font-size: 14px;
+  }
+
+  .hom-0330-post-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .hom-0330-achievements-grid,
+  .hom-0330-tournaments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hom-0330-achievement-card,
+  .hom-0330-tournament-card-feed {
+    max-width: 100%;
+  }
+}
+
+/* EXTRA SMALL - 360px and below */
+@media (max-width: 360px) {
+  .hom-0330-create-post-card,
+  .hom-0330-post-card,
+  .hom-0330-achievements-feed-section,
+  .hom-0330-tournaments-feed-section {
+    padding: 8px;
+  }
+
+  .hom-0330-section-header h2 {
+    font-size: 14px;
+  }
+
+  .hom-0330-view-all-btn {
+    font-size: 12px;
+  }
+
+  .hom-0330-action-btn {
+    font-size: 9px;
+    padding: 6px 1px;
+  }
+}
+
+/* LANDSCAPE MODE FIXES */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hom-0330-homepage-container {
+    padding-top: 52px;
+  }
+
+  .hom-0330-post-media.hom-0330-media-count-1 {
+    max-height: 60vh;
+  }
+
+  .hom-0330-post-media.hom-0330-media-count-2,
+  .hom-0330-post-media.hom-0330-media-count-3,
+  .hom-0330-post-media.hom-0330-media-count-4,
+  .hom-0330-post-media.hom-0330-media-count-5plus {
+    max-height: 50vh;
   }
 }
