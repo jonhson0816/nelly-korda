@@ -30,9 +30,10 @@
 .messenger-container {
   display: flex;
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height for mobile */
+  height: 100dvh;
   background: var(--background);
   overflow: hidden;
+  top: 60px;
   position: fixed;
   top: 0;
   left: 0;
