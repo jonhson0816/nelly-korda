@@ -29,17 +29,17 @@
    ============================================ */
 .messenger-container {
   display: flex;
-  height: calc(100vh - 60px);
-  height: calc(100dvh - 60px);
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   background: var(--background);
   overflow: hidden;
   position: fixed;
-  top: 60px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 999; /* Ensure messenger is above footer */
 }
 
 /* ============================================
@@ -358,6 +358,7 @@
   min-height: var(--header-height);
   position: sticky;
   top: 0;
+  z-index: 10;
   gap: 12px;
 }
 
