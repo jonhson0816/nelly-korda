@@ -47,6 +47,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
+  z-index: 999; /* Ensure messenger is above footer */
 }
 
 /* ============================================
