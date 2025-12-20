@@ -118,7 +118,7 @@ const Navbar = () => {
       <div className="nav-000-navbar-container">
         {/* Logo */}
         <Link to="/" className="nav-000-navbar-logo" onClick={closeMobileMenu}>
-          <img src="/Images/logo.png" alt="Nelly Korda Logo" className="nav-000-logo-icon" />
+          <img src="/Images/Nelly.jpg" alt="Nelly Korda Logo" className="nav-000-logo-icon" />
           <span className="nav-000-logo-text">Nelly Korda</span>
         </Link>
 
