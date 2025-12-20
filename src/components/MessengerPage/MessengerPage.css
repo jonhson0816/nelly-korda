@@ -29,19 +29,21 @@
    MAIN CONTAINER - CRITICAL FIX
    ============================================ */
 .messenger-container {
-  /* margin: 3rem auto; */
   display: flex;
-  height: calc(100vh - var(--navbar-height)); /* ✅ FIXED: Account for navbar */
+  height: calc(100vh - var(--navbar-height));
   height: calc(100dvh - var(--navbar-height));
   background: var(--background);
   overflow: hidden;
+  overflow-x: hidden;
   position: fixed;
-  top: var(--navbar-height); /* ✅ FIXED: Start below navbar */
+  top: var(--navbar-height);
   left: 0;
   right: 0;
   bottom: 15px;
   width: 100%;
-  z-index: 10; /* ✅ FIXED: Below navbar but above content */
+  max-width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
 /* ============================================
@@ -49,6 +51,7 @@
    ============================================ */
 .messenger-sidebar {
   width: 100%;
+  max-width: 100%; /* ✅ CRITICAL */
   background: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
@@ -56,6 +59,8 @@
   position: relative;
   z-index: 2;
   height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* Hide sidebar when chat is active on mobile */
@@ -129,6 +134,10 @@
   background: var(--background);
   position: relative;
   flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .search-input {
@@ -172,8 +181,12 @@
 .conversations-list {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding-bottom: var(--mobile-safe-bottom);
+  width: 100%; 
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .no-conversations {
@@ -1821,10 +1834,14 @@ input:checked + .toggle-slider:before {
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  max-width: 100%;
   background: var(--background);
   z-index: 100;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .modal-header {
@@ -1868,8 +1885,12 @@ input:checked + .toggle-slider:before {
 .users-list {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding-bottom: var(--mobile-safe-bottom);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .no-users-found {
@@ -1896,6 +1917,10 @@ input:checked + .toggle-slider:before {
   transition: background 0.15s ease;
   gap: 12px;
   -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .user-item:active {
@@ -2032,12 +2057,56 @@ input:checked + .toggle-slider:before {
    RESPONSIVE - MOBILE (<768px) - CRITICAL FIXES
    ============================================ */
 @media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .messenger-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
   .messenger-sidebar {
     width: 100%;
+    max-width: 100%;
   }
   
   .messenger-chat {
     width: 100%;
+    max-width: 100%;
+  }
+  
+  .new-chat-modal {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .users-list {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .user-item {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .conversations-list {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .conversation-item {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .info-panel,
@@ -2051,35 +2120,37 @@ input:checked + .toggle-slider:before {
     z-index: 30;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* ✅ CRITICAL FIX: Ensure input area is always visible */
   .chat-input-area {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: 100%;
     z-index: 25;
     background: var(--background);
     border-top: 2px solid var(--border-color);
+    box-sizing: border-box;
   }
-  
-  /* ✅ CRITICAL FIX: Extra padding for messages to prevent overlap */
   .messages-area {
     padding-bottom: calc(var(--input-area-height) + 140px + var(--mobile-safe-bottom));
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
-  /* ✅ CRITICAL FIX: Ensure chat header is always visible */
   .chat-header {
     position: fixed;
     top: var(--navbar-height);
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: 100%;
     z-index: 20;
     background: var(--background);
     border-bottom: 2px solid var(--border-color);
+    box-sizing: border-box;
   }
-  
-  /* ✅ CRITICAL FIX: Adjust messages area to account for fixed header */
   .messenger-chat.show-on-mobile .messages-area {
     margin-top: var(--header-height);
   }
