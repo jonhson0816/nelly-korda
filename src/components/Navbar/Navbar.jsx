@@ -118,7 +118,7 @@ const Navbar = () => {
       <div className="nav-000-navbar-container">
         {/* Logo */}
         <Link to="/" className="nav-000-navbar-logo" onClick={closeMobileMenu}>
-          <span className="nav-000-logo-icon">🎾</span>
+          <img src="/Images/logo.png" alt="Nelly Korda Logo" className="nav-000-logo-icon" />
           <span className="nav-000-logo-text">Nelly Korda</span>
         </Link>
 
@@ -208,6 +208,47 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
+
+        {/* Mobile Icon Navigation - Only visible on mobile/tablet */}
+        {isAuthenticated && (
+          <div className="nav-000-mobile-icons">
+            <NavLink to="/chat" className="nav-000-mobile-icon-link">
+              <svg className="nav-000-mobile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </NavLink>
+
+            <NavLink to="/notifications" className="nav-000-mobile-icon-link">
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <svg className="nav-000-mobile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {unreadNotifications > 0 && (
+                  <span className="nav-000-mobile-notification-badge">{unreadNotifications > 99 ? '99+' : unreadNotifications}</span>
+                )}
+              </div>
+            </NavLink>
+
+            <NavLink to="/achievements" className="nav-000-mobile-icon-link">
+              <svg className="nav-000-mobile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="8" r="7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </NavLink>
+
+            <NavLink to="/tournaments" className="nav-000-mobile-icon-link">
+              <svg className="nav-000-mobile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 22h16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </NavLink>
+          </div>
+        )}
 
         {/* Right Side - Auth Actions */}
         <div className="nav-000-navbar-actions">
@@ -379,32 +420,12 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/chat" onClick={closeMobileMenu}>
-                      💬 Messages
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/notifications" onClick={closeMobileMenu}>
-                      🔔 Notifications
-                    </NavLink>
-                  </li>
-                  <li>
                     <NavLink to="/profile" onClick={closeMobileMenu}>
                       👤 Profile
                     </NavLink>
                   </li>
                 </>
               )}
-              <li>
-                <NavLink to="/achievements" onClick={closeMobileMenu}>
-                  🏆 Achievements
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/tournaments" onClick={closeMobileMenu}>
-                  🥇 Tournaments
-                </NavLink>
-              </li>
               <li>
                 <NavLink to="/gallery" onClick={closeMobileMenu}>
                   📸 Gallery

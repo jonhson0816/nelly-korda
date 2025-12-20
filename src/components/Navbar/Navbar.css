@@ -69,8 +69,9 @@
 }
 
 .nav-000-logo-icon {
-  font-size: 24px;
-  line-height: 1;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .nav-000-logo-text {
@@ -153,6 +154,67 @@
   position: absolute;
   top: -4px;
   right: -4px;
+  background-color: #cc1016;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 10px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--nav-bg);
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Mobile Icon Navigation
+   ============================================ */
+.nav-000-mobile-icons {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+  flex: 1;
+  justify-content: center;
+  max-width: 250px;
+}
+
+.nav-000-mobile-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  color: var(--nav-text-secondary);
+  transition: var(--nav-transition);
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-000-mobile-icon-link:hover {
+  background-color: var(--nav-hover-bg);
+  color: var(--nav-text);
+}
+
+.nav-000-mobile-icon-link.active {
+  color: var(--nav-primary);
+  background-color: rgba(10, 102, 194, 0.08);
+}
+
+.nav-000-mobile-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.nav-000-mobile-notification-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   background-color: #cc1016;
   color: white;
   font-size: 10px;
@@ -585,10 +647,55 @@
 }
 
 /* ============================================
+   Admin Section Styles
+   ============================================ */
+.nav-000-dropdown-section-header {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nav-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f3f6f8;
+}
+
+.nav-000-admin-item {
+  color: var(--nav-primary);
+  font-weight: 600;
+}
+
+.nav-000-admin-item:hover {
+  background-color: rgba(10, 102, 194, 0.08);
+}
+
+.nav-000-admin-item .nav-000-dropdown-icon {
+  color: var(--nav-primary);
+}
+
+.nav-000-mobile-menu-divider {
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nav-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #f3f6f8;
+  margin-top: 8px;
+}
+
+.nav-000-mobile-admin-link {
+  color: var(--nav-primary) !important;
+  font-weight: 600 !important;
+}
+
+.nav-000-mobile-admin-link:hover {
+  background-color: rgba(10, 102, 194, 0.08) !important;
+}
+
+/* ============================================
    Responsive Design
    ============================================ */
 
-/* Tablet - 768px and below */
 /* Tablet - 768px and below */
 @media (max-width: 768px) {
   .nav-000-navbar {
@@ -603,6 +710,10 @@
 
   .nav-000-navbar-nav {
     display: none;
+  }
+
+  .nav-000-mobile-icons {
+    display: flex;
   }
 
   .nav-000-mobile-menu-toggle {
@@ -660,6 +771,21 @@
   .nav-000-navbar-logo {
     padding: 4px;
   }
+
+  .nav-000-mobile-icons {
+    gap: 2px;
+    max-width: 220px;
+  }
+
+  .nav-000-mobile-icon-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav-000-mobile-icon {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* Extra Small - 360px and below */
@@ -676,6 +802,26 @@
     padding: 12px 16px;
     font-size: 15px;
   }
+
+  .nav-000-mobile-icons {
+    gap: 0;
+    max-width: 200px;
+  }
+
+  .nav-000-mobile-icon-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-000-mobile-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-000-logo-icon {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* Desktop - Hide mobile menu elements */
@@ -687,6 +833,10 @@
   .nav-000-mobile-menu-overlay {
     display: none !important;
   }
+
+  .nav-000-mobile-icons {
+    display: none !important;
+  }
 }
 
 /* Large Desktop - Max container width */
@@ -694,52 +844,6 @@
   .nav-000-navbar-container {
     padding: 0 24px;
   }
-}
-
-/* ============================================
-   Admin Section Styles
-   ============================================ */
-.nav-000-dropdown-section-header {
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--nav-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background-color: #f3f6f8;
-}
-
-.nav-000-admin-item {
-  color: var(--nav-primary);
-  font-weight: 600;
-}
-
-.nav-000-admin-item:hover {
-  background-color: rgba(10, 102, 194, 0.08);
-}
-
-.nav-000-admin-item .nav-000-dropdown-icon {
-  color: var(--nav-primary);
-}
-
-.nav-000-mobile-menu-divider {
-  padding: 8px 20px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--nav-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background-color: #f3f6f8;
-  margin-top: 8px;
-}
-
-.nav-000-mobile-admin-link {
-  color: var(--nav-primary) !important;
-  font-weight: 600 !important;
-}
-
-.nav-000-mobile-admin-link:hover {
-  background-color: rgba(10, 102, 194, 0.08) !important;
 }
 
 /* ============================================
